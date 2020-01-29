@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../inc/filler.h
+libft.h
+../inc/libft.h
+
+/Users/mshagga/CLionProjects/filler/main.c
+filler.h
+/Users/mshagga/CLionProjects/filler/filler.h
+
