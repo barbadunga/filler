@@ -4,6 +4,8 @@ project(filler)
 set(CMAKE_C_STANDARD 99)
 
 include_directories(inc)
-include_directories(libft)
+include_directories(Libft/)
 aux_source_directory(src sources)
-add_executable(filler ${sources} main.c)
+add_executable(filler ${sources})
+
+target_link_libraries(filler ${PROJECT_SOURCE_DIR}/Libft/libft.a)

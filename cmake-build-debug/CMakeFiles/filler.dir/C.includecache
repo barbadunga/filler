@@ -6,11 +6,17 @@
 
 #IncludeRegexTransform: 
 
+../Libft/libft.h
+unistd.h
+-
+stdlib.h
+-
+
 ../inc/filler.h
 libft.h
 ../inc/libft.h
 
-/Users/mshagga/CLionProjects/filler/main.c
+/Users/mshagga/CLionProjects/filler/src/main.c
 filler.h
-/Users/mshagga/CLionProjects/filler/filler.h
+/Users/mshagga/CLionProjects/filler/src/filler.h
 

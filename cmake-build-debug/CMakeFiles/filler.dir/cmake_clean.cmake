@@ -1,7 +1,9 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/filler.dir/main.c.o"
-  "filler.pdb"
+  "CMakeFiles/filler.dir/src/debug.c.o"
+  "CMakeFiles/filler.dir/src/init.c.o"
+  "CMakeFiles/filler.dir/src/main.c.o"
   "filler"
+  "filler.pdb"
 )
 
 # Per-language clean rules from dependency scanning.
