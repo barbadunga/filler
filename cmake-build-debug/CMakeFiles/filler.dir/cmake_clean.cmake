@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/filler.dir/src/algo.c.o"
   "CMakeFiles/filler.dir/src/debug.c.o"
   "CMakeFiles/filler.dir/src/init.c.o"
+  "CMakeFiles/filler.dir/src/lee.c.o"
   "CMakeFiles/filler.dir/src/main.c.o"
   "filler"
   "filler.pdb"

@@ -6,7 +6,7 @@
 /*   By: mshagga <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/03 19:18:17 by mshagga           #+#    #+#             */
-/*   Updated: 2020/02/04 23:22:06 by mshagga          ###   ########.fr       */
+/*   Updated: 2020/02/05 21:30:28 by mshagga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,14 @@ void	print_map(t_map *ptr)
 
 	fd = fopen(DEBUG_FILE, "a");
 	i = 0;
+	fprintf(fd, "\t");
+	for (int k = 0; k < ptr->cols; k++)
+		fprintf(fd, "%4d", k);
+	fprintf(fd, "\n");
 	while (i < ptr->rows)
 	{
 		j = 0;
+		fprintf(fd, "%d\t", i);
 		while (j < ptr->cols)
 		{
 			fprintf(fd, "%4d", ptr->map[i][j]);
@@ -44,6 +49,21 @@ void	print_map(t_map *ptr)
 		i++;
 		fprintf(fd, "\n");
 	}
+	fclose(fd);
+}
+
+void	write_array(int **array, int rows, int cols)
+{
+	FILE	*fd;
+
+	fd = fopen(DEBUG_FILE, "a");
+	for (int i = 0; i < rows; i++)
+	{
+		for (int j = 0; j < cols; j++)
+			fprintf(fd, "%4d", array[i][j]);
+		fprintf(fd, "\n");
+	}
+	fprintf(fd, "\n");
 	fclose(fd);
 }
 
@@ -78,3 +98,17 @@ void	write_number(int n1, int n2)
 	fclose(fd);
 
 }
+
+void	write_vec(t_vec *pos)
+{
+	FILE		*fd;
+	uint64_t	*ptr;
+
+	ptr = pos->data;
+	fd = fopen(DEBUG_FILE, "a");
+	for (int i = 0; i < pos->total; i++)
+		fprintf(fd, " (%d, %d) ", (int)(ptr[i] >> 32u), (int)(ptr[i] & MASK));
+	fprintf(fd, "\n");
+	fclose(fd);
+}
+

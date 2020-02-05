@@ -9,6 +9,10 @@ CMakeFiles/filler.dir/src/init.c.o: ../Libft/libft.h
 CMakeFiles/filler.dir/src/init.c.o: ../inc/filler.h
 CMakeFiles/filler.dir/src/init.c.o: ../src/init.c
 
+CMakeFiles/filler.dir/src/lee.c.o: ../Libft/libft.h
+CMakeFiles/filler.dir/src/lee.c.o: ../inc/filler.h
+CMakeFiles/filler.dir/src/lee.c.o: ../src/lee.c
+
 CMakeFiles/filler.dir/src/main.c.o: ../Libft/libft.h
 CMakeFiles/filler.dir/src/main.c.o: ../inc/filler.h
 CMakeFiles/filler.dir/src/main.c.o: ../src/main.c

@@ -123,6 +123,33 @@ filler/fast:
 	$(MAKE) -f CMakeFiles/filler.dir/build.make CMakeFiles/filler.dir/build
 .PHONY : filler/fast
 
+src/algo.o: src/algo.c.o
+
+.PHONY : src/algo.o
+
+# target to build an object file
+src/algo.c.o:
+	$(MAKE) -f CMakeFiles/filler.dir/build.make CMakeFiles/filler.dir/src/algo.c.o
+.PHONY : src/algo.c.o
+
+src/algo.i: src/algo.c.i
+
+.PHONY : src/algo.i
+
+# target to preprocess a source file
+src/algo.c.i:
+	$(MAKE) -f CMakeFiles/filler.dir/build.make CMakeFiles/filler.dir/src/algo.c.i
+.PHONY : src/algo.c.i
+
+src/algo.s: src/algo.c.s
+
+.PHONY : src/algo.s
+
+# target to generate assembly for a file
+src/algo.c.s:
+	$(MAKE) -f CMakeFiles/filler.dir/build.make CMakeFiles/filler.dir/src/algo.c.s
+.PHONY : src/algo.c.s
+
 src/debug.o: src/debug.c.o
 
 .PHONY : src/debug.o
@@ -177,6 +204,33 @@ src/init.c.s:
 	$(MAKE) -f CMakeFiles/filler.dir/build.make CMakeFiles/filler.dir/src/init.c.s
 .PHONY : src/init.c.s
 
+src/lee.o: src/lee.c.o
+
+.PHONY : src/lee.o
+
+# target to build an object file
+src/lee.c.o:
+	$(MAKE) -f CMakeFiles/filler.dir/build.make CMakeFiles/filler.dir/src/lee.c.o
+.PHONY : src/lee.c.o
+
+src/lee.i: src/lee.c.i
+
+.PHONY : src/lee.i
+
+# target to preprocess a source file
+src/lee.c.i:
+	$(MAKE) -f CMakeFiles/filler.dir/build.make CMakeFiles/filler.dir/src/lee.c.i
+.PHONY : src/lee.c.i
+
+src/lee.s: src/lee.c.s
+
+.PHONY : src/lee.s
+
+# target to generate assembly for a file
+src/lee.c.s:
+	$(MAKE) -f CMakeFiles/filler.dir/build.make CMakeFiles/filler.dir/src/lee.c.s
+.PHONY : src/lee.c.s
+
 src/main.o: src/main.c.o
 
 .PHONY : src/main.o
@@ -213,12 +267,18 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... filler"
+	@echo "... src/algo.o"
+	@echo "... src/algo.i"
+	@echo "... src/algo.s"
 	@echo "... src/debug.o"
 	@echo "... src/debug.i"
 	@echo "... src/debug.s"
 	@echo "... src/init.o"
 	@echo "... src/init.i"
 	@echo "... src/init.s"
+	@echo "... src/lee.o"
+	@echo "... src/lee.i"
+	@echo "... src/lee.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

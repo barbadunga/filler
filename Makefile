@@ -6,7 +6,7 @@
 #    By: mshagga <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/29 17:21:59 by mshagga           #+#    #+#              #
-#    Updated: 2020/02/04 17:23:10 by mshagga          ###   ########.fr        #
+#    Updated: 2020/02/05 21:29:11 by mshagga          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,10 @@ PLAYERS_DIR = ./players
 
 SRC_LIST =	main.c \
 			debug.c \
-			init.c
+			init.c \
+			lee.c \
+			algo.c
+
 INC_LIST = filler.h
 OBJ_LIST = $(patsubst %.c, %.o, $(SRC_LIST))
 

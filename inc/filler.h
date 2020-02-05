@@ -6,7 +6,7 @@
 /*   By: mshagga <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 20:04:01 by mshagga           #+#    #+#             */
-/*   Updated: 2020/02/04 23:20:51 by mshagga          ###   ########.fr       */
+/*   Updated: 2020/02/05 21:27:23 by mshagga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # define FALSE		0
 # define WALL		999
 # define DEBUG_FILE	"debug.info"
+# define MASK		0xFFFFFFFFu
+
 # include "libft.h"
 
 typedef struct	s_map
@@ -32,10 +34,10 @@ typedef struct s_bot
 	t_map	*map;
 }			 	t_bot;
 
-typedef struct	s_point
+typedef union	s_point
 {
-	int		x;
-	int		y;
+	unsigned long long	val;
+	int					xy[2];
 }				t_point;
 
 /*
@@ -51,6 +53,9 @@ t_map	*init_map(char *plat);
 
 //void	parse_input(t_bot *bot);
 
+t_point lee_algotihm(t_bot *bot, t_map *token);
+t_point	make_choice(t_bot *bot, t_map *token, t_point *pos, int total);
+
 /*
 ** Debug tools
 */
@@ -60,5 +65,6 @@ void	write_line(char *line);
 void	debug_init();
 void	print_map(t_map *ptr);
 void	write_number(int n1, int n2);
-
+void	write_vec(t_vec *pos);
+void	write_array(int **array, int rows, int cols);
 #endif

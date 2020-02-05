@@ -86,10 +86,16 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/Users/mshagga/CLionProjects/filler/src/algo.c">
+			<Option target="filler"/>
+		</Unit>
 		<Unit filename="/Users/mshagga/CLionProjects/filler/src/debug.c">
 			<Option target="filler"/>
 		</Unit>
 		<Unit filename="/Users/mshagga/CLionProjects/filler/src/init.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/Users/mshagga/CLionProjects/filler/src/lee.c">
 			<Option target="filler"/>
 		</Unit>
 		<Unit filename="/Users/mshagga/CLionProjects/filler/src/main.c">
