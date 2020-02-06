@@ -6,7 +6,7 @@
 /*   By: mshagga <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/03 19:18:17 by mshagga           #+#    #+#             */
-/*   Updated: 2020/02/05 21:30:28 by mshagga          ###   ########.fr       */
+/*   Updated: 2020/02/06 20:25:01 by mshagga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,13 @@ void	write_array(int **array, int rows, int cols)
 	FILE	*fd;
 
 	fd = fopen(DEBUG_FILE, "a");
+	fprintf(fd, "\t");
+	for (int k = 0; k < cols; k++)
+		fprintf(fd, "%4d", k);
+	fprintf(fd, "\n");
 	for (int i = 0; i < rows; i++)
 	{
+		fprintf(fd, "%d\t", i);
 		for (int j = 0; j < cols; j++)
 			fprintf(fd, "%4d", array[i][j]);
 		fprintf(fd, "\n");
@@ -112,3 +117,14 @@ void	write_vec(t_vec *pos)
 	fclose(fd);
 }
 
+void	write_queue(t_queue *q)
+{
+	FILE	*fd;
+
+	fd = fopen(DEBUG_FILE, "a");
+	fprintf(fd, "queue: ");
+	for (int i = 0; i < q->tail; i++)
+		fprintf(fd, "(%d, %d)\t", q->data[i].xy[0], q->data[i].xy[1]);
+	fprintf(fd, "\n");
+	fclose(fd);
+}

@@ -6,7 +6,7 @@
 /*   By: mshagga <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/05 21:04:43 by mshagga           #+#    #+#             */
-/*   Updated: 2020/02/05 21:44:46 by mshagga          ###   ########.fr       */
+/*   Updated: 2020/02/06 22:59:24 by mshagga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,23 @@ int		**init_board(int rows, int cols)
 	return (res);
 }
 
-void	copy_board(int **map, int **board, int rows, int cols)
+void	enqueue(t_queue *q, t_point point)
 {
+	if (q->tail >= MAX_CELLS)
+		return ;
+	q->data[q->tail++] = point;
+}
+
+t_point	dequeue(t_queue *q)
+{
+	return (q->data[q->head++]);
+}
+
+void	copy_board(t_map *map, int **board, t_queue *queue)
+{
+	const int	rows = map->rows;
+	const int	cols = map->cols;
+	t_point		conv;
 	int	i;
 	int	j;
 
@@ -40,19 +55,26 @@ void	copy_board(int **map, int **board, int rows, int cols)
 		j = 0;
 		while (j < cols)
 		{
-			board[i][j] = map[i][j];
+			board[i][j] = map->map[i][j];
+			if (!board[i][j])
+			{
+				conv.xy[0] = i;
+				conv.xy[1] = j;
+				enqueue(queue, conv);
+			}
 			j++;
 		}
 		i++;
 	}
 }
 
-void	place_token(int **board, t_map *token, int r, int c)
+void	place_token(int **board, t_map *token, t_point point, t_queue *q)
 {
 	const int	rows = token->rows;
 	const int	cols = token->cols;
 	int			i;
 	int			j;
+	t_point		p;
 
 	i = 0;
 	while (i < rows)
@@ -61,7 +83,15 @@ void	place_token(int **board, t_map *token, int r, int c)
 		while (j < cols)
 		{
 			if (!token->map[i][j])
-				board[r + i][c + j] = 0;
+			{
+				if (board[point.xy[0] + i][point.xy[1] + j])
+				{
+					p.xy[0] = point.xy[0] + i;
+					p.xy[1] = point.xy[1] + j;
+					enqueue(q, p);
+				}
+				board[point.xy[0] + i][point.xy[1] + j] = 0;
+			}
 			j++;
 		}
 		i++;
@@ -70,31 +100,46 @@ void	place_token(int **board, t_map *token, int r, int c)
 
 int		get_score(int **board, int rows, int cols)
 {
+	return (0);
+}
 
+void	reset_queue(t_queue *q)
+{
+	q->head = 0;
+	q->tail = 0;
 }
 
 t_point	make_choice(t_bot *bot, t_map *token, t_point *pos, int total)
 {
+	t_queue			queue;
 	static int		**board;
-	t_point			res;
 	int				i;
 	int				score;
 	int				tmp;
+	int				res;
 
 	i = 0;
 	if (!board)
 		board = init_board(bot->map->rows, bot->map->cols);
-	score = INT16_MAX;
+	score = INT32_MAX;
+	queue.head = 0;
+	queue.tail = 0;
+	res = 0;
 	while (i < total)
 	{
-		copy_board(bot->map->map, board, bot->map->rows, bot->map->cols);
-		place_token(board, token, pos[i].xy[0], pos[i].xy[1]);
+		copy_board(bot->map, board, &queue);
+		place_token(board, token, pos[i], &queue);
+//		write_queue(&queue);
 //		write_array(board, bot->map->rows, bot->map->cols);
-		lee_algotihm(board, ) // TODO implement
-		get_score() // TODO implement
+		tmp = lee_algorithm(board, bot->map->rows, bot->map->cols, &queue);
+//		write_number(tmp, 1);
 		if (tmp < score)
+		{
 			score = tmp;
+			res = i;
+		}
 		i++;
+		reset_queue(&queue);
 	}
-	return (res);
+	return (pos[res]);
 }

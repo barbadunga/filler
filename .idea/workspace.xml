@@ -15,22 +15,16 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Libft" beforeDir="false" afterPath="$PROJECT_DIR$/Libft" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Libft/libft.h" beforeDir="false" afterPath="$PROJECT_DIR$/Libft/libft.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/filler.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/filler.dir/DependInfo.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/filler.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/filler.dir/build.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/filler.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/filler.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/filler.dir/C.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/filler.dir/C.includecache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/filler.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/filler.dir/depend.internal" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/filler.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/filler.dir/depend.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/filler.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/filler.dir/link.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/filler.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/filler.dir/progress.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/filler.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/filler.cbp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/debug.info" beforeDir="false" afterPath="$PROJECT_DIR$/debug.info" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/inc/filler.h" beforeDir="false" afterPath="$PROJECT_DIR$/inc/filler.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/players/mshagga.filler" beforeDir="false" afterPath="$PROJECT_DIR$/players/mshagga.filler" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algo.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/algo.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/debug.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/debug.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/init.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/init.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lee.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/lee.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -109,7 +103,9 @@
       <workItem from="1580824570068" duration="9908000" />
       <workItem from="1580843611732" duration="6284000" />
       <workItem from="1580903127337" duration="9123000" />
-      <workItem from="1580925761809" duration="2539000" />
+      <workItem from="1580925761809" duration="3035000" />
+      <workItem from="1580994588458" duration="5576000" />
+      <workItem from="1581008684015" duration="9809000" />
     </task>
     <servers />
   </component>
@@ -158,10 +154,11 @@
     </state>
     <state x="580" y="227" key="SettingsEditor/0.0.2560.1360@0.0.2560.1360" timestamp="1580821834013" />
     <state x="580" y="246" key="SettingsEditor/0.23.2560.1337@0.23.2560.1337" timestamp="1580821787537" />
-    <state x="959" y="523" key="com.intellij.ide.util.TipDialog" timestamp="1580925817400">
-      <screen x="0" y="23" width="2560" height="1337" />
+    <state x="959" y="509" key="com.intellij.ide.util.TipDialog" timestamp="1581008964234">
+      <screen x="0" y="0" width="2560" height="1360" />
     </state>
-    <state x="959" y="509" key="com.intellij.ide.util.TipDialog/0.0.2560.1360@0.0.2560.1360" timestamp="1580843616479" />
+    <state x="767" y="401" key="com.intellij.ide.util.TipDialog/0.0.2048.1072@0.0.2048.1072" timestamp="1580994683019" />
+    <state x="959" y="509" key="com.intellij.ide.util.TipDialog/0.0.2560.1360@0.0.2560.1360" timestamp="1581008964234" />
     <state x="959" y="523" key="com.intellij.ide.util.TipDialog/0.23.2560.1337@0.23.2560.1337" timestamp="1580925817400" />
     <state x="945" y="328" key="run.anything.popup" timestamp="1580927243339">
       <screen x="0" y="23" width="2560" height="1337" />

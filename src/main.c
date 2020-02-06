@@ -6,7 +6,7 @@
 /*   By: mshagga <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 17:05:22 by mshagga           #+#    #+#             */
-/*   Updated: 2020/02/05 21:44:46 by mshagga          ###   ########.fr       */
+/*   Updated: 2020/02/06 22:55:00 by mshagga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,15 @@ int		fill_map(int **ptr, int rows, char symbol)
 		if (get_next_line(STDIN_FILENO, &line) == -1)
 			return (1);
 		line += symbol == '*' ? 0 : 4;
-		j = 0;
-		while (line[j])
+		j = -1;
+		while (line[++j])
 		{
 			if (line[j] == '.')
 				ptr[i][j] = -1;
 			else
 				ptr[i][j] = ft_toupper(line[j]) == symbol ? 0 : WALL;
-			j++;
+//			if (!ptr[i][j] && q)
+//				enqueue(q, (t_point)(((uint64_t)i << 32u) | ((unsigned int)j & MASK)));
 		}
 		free(line - (symbol == '*' ? 0 : 4));
 	}
@@ -53,13 +54,15 @@ t_map	*parse_input(t_bot *bot)
 //	free(line);
 	if (fill_map(bot->map->map, bot->map->rows, bot->symbol))
 		return (NULL);
-	print_map(bot->map);
-	get_next_line(STDIN_FILENO, &line);
+//	print_map(bot->map);
+	if (get_next_line(STDIN_FILENO, &line) == -1)
+		return (NULL);
 	token = init_map(line);
-	fill_map(token->map, token->rows, '*');
-//	free(line);
-	write_line(line);
-	print_map(token);
+	if (fill_map(token->map, token->rows, '*'))
+		return (NULL);
+	//	free(line);
+//	write_line(line);
+//	print_map(token);
 	return (token);
 }
 
@@ -172,13 +175,14 @@ int		main(void)
 	{
 		token = parse_input(bot);
 		if (!(pos = get_all_pos(bot->map, token, bot->map->rows, bot->map->cols)))
-//			return (0);
-			break;
+			return (0);
+//			break;
 		else
 		{
-			write_vec(pos);
+//			write_vec(pos);
 			res = make_choice(bot, token, pos->data, pos->total);
-			write_move(((t_point*)pos->data)[pos->total - 1]);
+//			write_move(((t_point*)pos->data)[pos->total - 1]);
+			write_move(res);
 		}
 		i++;
 	}
