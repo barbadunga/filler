@@ -4,6 +4,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/filler.dir/src/init.c.o"
   "CMakeFiles/filler.dir/src/lee.c.o"
   "CMakeFiles/filler.dir/src/main.c.o"
+  "CMakeFiles/filler.dir/src/parser.c.o"
+  "CMakeFiles/filler.dir/src/queue.c.o"
   "filler"
   "filler.pdb"
 )

@@ -21,3 +21,11 @@ CMakeFiles/filler.dir/src/main.c.o: ../Libft/libft.h
 CMakeFiles/filler.dir/src/main.c.o: ../inc/filler.h
 CMakeFiles/filler.dir/src/main.c.o: ../src/main.c
 
+CMakeFiles/filler.dir/src/parser.c.o: ../Libft/libft.h
+CMakeFiles/filler.dir/src/parser.c.o: ../inc/filler.h
+CMakeFiles/filler.dir/src/parser.c.o: ../src/parser.c
+
+CMakeFiles/filler.dir/src/queue.c.o: ../Libft/libft.h
+CMakeFiles/filler.dir/src/queue.c.o: ../inc/filler.h
+CMakeFiles/filler.dir/src/queue.c.o: ../src/queue.c
+

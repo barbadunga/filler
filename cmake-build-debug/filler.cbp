@@ -101,6 +101,12 @@
 		<Unit filename="/Users/mshagga/CLionProjects/filler/src/main.c">
 			<Option target="filler"/>
 		</Unit>
+		<Unit filename="/Users/mshagga/CLionProjects/filler/src/parser.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/Users/mshagga/CLionProjects/filler/src/queue.c">
+			<Option target="filler"/>
+		</Unit>
 		<Unit filename="/Users/mshagga/CLionProjects/filler/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>

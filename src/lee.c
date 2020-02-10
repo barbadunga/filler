@@ -6,7 +6,7 @@
 /*   By: mshagga <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/05 19:14:28 by mshagga           #+#    #+#             */
-/*   Updated: 2020/02/06 22:54:33 by mshagga          ###   ########.fr       */
+/*   Updated: 2020/02/10 18:30:06 by mshagga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,24 @@ int		count_score(int **board, int rows, int cols)
 	int	i;
 	int	j;
 	int	res;
+	int c;
 
 	i = 0;
 	res = 0;
+	c = 0;
 	while (i < rows)
 	{
 		j = 0;
 		while (j < cols)
 		{
-			res += board[i][j];
+			if (board[i][j] == -1)
+			{
+				c++;
+				res += WALL * c;
+			}
+			else
+				res += board[i][j];
+//			res += board[i][j];
 			j++;
 		}
 		i++;
@@ -60,7 +69,6 @@ int		lee_algorithm(int **board, int rows, int cols, t_queue *queue)
 	int		res;
 	t_point	cur;
 
-	i = 0;
 	while (queue->head != queue->tail)
 	{
 		cur = dequeue(queue);
@@ -73,6 +81,7 @@ int		lee_algorithm(int **board, int rows, int cols, t_queue *queue)
 //		write_number(cur.xy[0], cur.xy[1]);
 //		write_array(board, rows, cols);
 	}
+//	write_array(board, rows, cols);
 	res = count_score(board, rows, cols);
 	return (res);
 }

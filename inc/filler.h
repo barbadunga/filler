@@ -6,7 +6,7 @@
 /*   By: mshagga <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 20:04:01 by mshagga           #+#    #+#             */
-/*   Updated: 2020/02/06 20:21:05 by mshagga          ###   ########.fr       */
+/*   Updated: 2020/02/10 16:58:31 by mshagga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef struct s_bot
 {
 	char    symbol;
 	t_map	*map;
+	t_map	*enemy;
 	t_queue	queue;
 }			 	t_bot;
 
@@ -60,10 +61,15 @@ t_map	*init_map(char *plat);
 ** Parse functions
 */
 
-//void	parse_input(t_bot *bot);
+t_map	*parse_input(t_bot *bot);
+
+/*
+** Main logic
+*/
 
 t_point	make_choice(t_bot *bot, t_map *token, t_point *pos, int total);
 int		lee_algorithm(int **board, int rows, int cols, t_queue *queue);
+
 /*
 ** Debug tools
 */
@@ -77,7 +83,12 @@ void	write_vec(t_vec *pos);
 void	write_array(int **array, int rows, int cols);
 void	write_queue(t_queue *q);
 
-void	enqueue(t_queue *q, t_point point);
+/*
+** Queue functions
+*/
+
 t_point	dequeue(t_queue *q);
+void	enqueue(t_queue *q, t_point point);
+void	reset_queue(t_queue *q);
 
 #endif

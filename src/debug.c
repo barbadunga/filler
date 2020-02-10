@@ -123,7 +123,7 @@ void	write_queue(t_queue *q)
 
 	fd = fopen(DEBUG_FILE, "a");
 	fprintf(fd, "queue: ");
-	for (int i = 0; i < q->tail; i++)
+	for (int i = q->head; i < q->tail; i++)
 		fprintf(fd, "(%d, %d)\t", q->data[i].xy[0], q->data[i].xy[1]);
 	fprintf(fd, "\n");
 	fclose(fd);

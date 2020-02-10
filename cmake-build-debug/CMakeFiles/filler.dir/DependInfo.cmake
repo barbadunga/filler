@@ -9,6 +9,8 @@ set(CMAKE_DEPENDS_CHECK_C
   "/Users/mshagga/CLionProjects/filler/src/init.c" "/Users/mshagga/CLionProjects/filler/cmake-build-debug/CMakeFiles/filler.dir/src/init.c.o"
   "/Users/mshagga/CLionProjects/filler/src/lee.c" "/Users/mshagga/CLionProjects/filler/cmake-build-debug/CMakeFiles/filler.dir/src/lee.c.o"
   "/Users/mshagga/CLionProjects/filler/src/main.c" "/Users/mshagga/CLionProjects/filler/cmake-build-debug/CMakeFiles/filler.dir/src/main.c.o"
+  "/Users/mshagga/CLionProjects/filler/src/parser.c" "/Users/mshagga/CLionProjects/filler/cmake-build-debug/CMakeFiles/filler.dir/src/parser.c.o"
+  "/Users/mshagga/CLionProjects/filler/src/queue.c" "/Users/mshagga/CLionProjects/filler/cmake-build-debug/CMakeFiles/filler.dir/src/queue.c.o"
   )
 set(CMAKE_C_COMPILER_ID "AppleClang")
 

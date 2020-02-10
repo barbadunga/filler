@@ -1,15 +1,4 @@
 /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/mshagga/CLionProjects/filler
-CMake Error at CMakeLists.txt:9 (add_executable):
-  Syntax error in cmake code at
-
-    /Users/mshagga/CLionProjects/filler/CMakeLists.txt:9
-
-  when parsing string
-
-    ${sources
-
-  There is an unterminated variable reference.
-
-
--- Configuring incomplete, errors occurred!
-See also "/Users/mshagga/CLionProjects/filler/cmake-build-debug/CMakeFiles/CMakeOutput.log".
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /Users/mshagga/CLionProjects/filler/cmake-build-debug

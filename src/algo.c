@@ -6,7 +6,7 @@
 /*   By: mshagga <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/05 21:04:43 by mshagga           #+#    #+#             */
-/*   Updated: 2020/02/06 22:59:24 by mshagga          ###   ########.fr       */
+/*   Updated: 2020/02/10 18:43:16 by mshagga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,6 @@ int		**init_board(int rows, int cols)
 		i++;
 	}
 	return (res);
-}
-
-void	enqueue(t_queue *q, t_point point)
-{
-	if (q->tail >= MAX_CELLS)
-		return ;
-	q->data[q->tail++] = point;
-}
-
-t_point	dequeue(t_queue *q)
-{
-	return (q->data[q->head++]);
 }
 
 void	copy_board(t_map *map, int **board, t_queue *queue)
@@ -98,15 +86,31 @@ void	place_token(int **board, t_map *token, t_point point, t_queue *q)
 	}
 }
 
-int		get_score(int **board, int rows, int cols)
+void	enemy_mode(int **board, int rows, int cols, t_queue *queue)
 {
-	return (0);
-}
+	t_point		conv;
+	int	i;
+	int	j;
 
-void	reset_queue(t_queue *q)
-{
-	q->head = 0;
-	q->tail = 0;
+	i = 0;
+	while (i < rows)
+	{
+		j = 0;
+		while (j < cols)
+		{
+			if (board[i][j] == WALL)
+			{
+				conv.xy[0] = i;
+				conv.xy[1] = j;
+				board[i][j] = 0;
+				enqueue(queue, conv);
+			}
+			else if (!board[i][j])
+				board[i][j] = WALL;
+			j++;
+		}
+		i++;
+	}
 }
 
 t_point	make_choice(t_bot *bot, t_map *token, t_point *pos, int total)
@@ -114,28 +118,31 @@ t_point	make_choice(t_bot *bot, t_map *token, t_point *pos, int total)
 	t_queue			queue;
 	static int		**board;
 	int				i;
-	int				score;
-	int				tmp;
+	int				score1, score2;
+	int				tmp1, tmp2;
 	int				res;
+	int				flag;
 
 	i = 0;
 	if (!board)
 		board = init_board(bot->map->rows, bot->map->cols);
-	score = INT32_MAX;
+	score1 = INT32_MAX;
+	score2 = INT32_MIN;
 	queue.head = 0;
 	queue.tail = 0;
 	res = 0;
 	while (i < total)
 	{
+		flag = 0;
 		copy_board(bot->map, board, &queue);
 		place_token(board, token, pos[i], &queue);
-//		write_queue(&queue);
-//		write_array(board, bot->map->rows, bot->map->cols);
-		tmp = lee_algorithm(board, bot->map->rows, bot->map->cols, &queue);
-//		write_number(tmp, 1);
-		if (tmp < score)
+
+		reset_queue(&queue);
+		enemy_mode(board, bot->map->rows, bot->map->cols, &queue);
+		tmp1 = lee_algorithm(board, bot->map->rows, bot->map->cols, &queue);
+		if (tmp1 > score2)
 		{
-			score = tmp;
+			score2 = tmp1;
 			res = i;
 		}
 		i++;
@@ -143,3 +150,35 @@ t_point	make_choice(t_bot *bot, t_map *token, t_point *pos, int total)
 	}
 	return (pos[res]);
 }
+
+//t_point	make_choice(t_bot *bot, t_map *token, t_point *pos, int total)
+//{
+//	t_queue			queue;
+//	static int		**board;
+//	int				i;
+//	int				score;
+//	int				tmp;
+//	int				res;
+//
+//	i = 0;
+//	if (!board)
+//		board = init_board(bot->map->rows, bot->map->cols);
+//	score = INT32_MAX;
+//	queue.head = 0;
+//	queue.tail = 0;
+//	res = 0;
+//	while (i < total)
+//	{
+//		copy_board(bot->map, board, &queue);
+//		place_token(board, token, pos[i], &queue);
+//		tmp = lee_algorithm(board, bot->map->rows, bot->map->cols, &queue);
+//		if (tmp < score)
+//		{
+//			score = tmp;
+//			res = i;
+//		}
+//		i++;
+//		reset_queue(&queue);
+//	}
+//	return (pos[res]);
+//}

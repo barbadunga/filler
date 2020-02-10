@@ -48,5 +48,6 @@ t_bot   *init_bot()
     	return (NULL);
     bot->symbol = line[10] == '1' ? 'O' : 'X';
     bot->map = NULL;
+    bot->enemy = NULL;
     return (bot);
 }

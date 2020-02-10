@@ -21,3 +21,11 @@ CMakeFiles/filler.dir/src/main.c.o
  ../Libft/libft.h
  ../inc/filler.h
  /Users/mshagga/CLionProjects/filler/src/main.c
+CMakeFiles/filler.dir/src/parser.c.o
+ ../Libft/libft.h
+ ../inc/filler.h
+ /Users/mshagga/CLionProjects/filler/src/parser.c
+CMakeFiles/filler.dir/src/queue.c.o
+ ../Libft/libft.h
+ ../inc/filler.h
+ /Users/mshagga/CLionProjects/filler/src/queue.c
