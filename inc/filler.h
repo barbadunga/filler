@@ -6,7 +6,7 @@
 /*   By: mshagga <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 20:04:01 by mshagga           #+#    #+#             */
-/*   Updated: 2020/02/10 16:58:31 by mshagga          ###   ########.fr       */
+/*   Updated: 2020/02/11 20:03:15 by mshagga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,10 @@
 # define DEBUG_FILE	"debug.info"
 # define MASK		0xFFFFFFFFu
 # define MAX_CELLS	9900
+# define MASK_X		(int)('X' << 24)
+# define MASK_O		(int)('O' << 24)
+# define MASK_DOT	(int)('.' << 24)
+# define MASK_CHAR	0xFF000000
 
 # include "libft.h"
 
@@ -27,6 +31,12 @@ typedef union	s_point
 	unsigned long long	val;
 	int					xy[2];
 }				t_point;
+
+typedef	struct	s_point2d
+{
+	int		x;
+	int		y;
+}				t_point2d;
 
 typedef struct	s_map
 {
@@ -37,16 +47,15 @@ typedef struct	s_map
 
 typedef struct	s_queue
 {
-	t_point	data[MAX_CELLS];
-	int		tail;
-	int		head;
+	t_point2d	*data;
+	int			tail;
+	int			head;
 }				t_queue;
 
 typedef struct s_bot
 {
 	char    symbol;
 	t_map	*map;
-	t_map	*enemy;
 	t_queue	queue;
 }			 	t_bot;
 
@@ -87,8 +96,11 @@ void	write_queue(t_queue *q);
 ** Queue functions
 */
 
-t_point	dequeue(t_queue *q);
-void	enqueue(t_queue *q, t_point point);
+t_point2d	dequeue(t_queue *q);
+void	enqueue(t_queue *q, t_point2d point);
 void	reset_queue(t_queue *q);
+
+
+t_point2d	main_loop(t_bot *bot, t_map *token, int rows, int cols);
 
 #endif

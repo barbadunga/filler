@@ -6,7 +6,7 @@
 /*   By: mshagga <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/03 18:11:19 by mshagga           #+#    #+#             */
-/*   Updated: 2020/02/06 20:17:07 by mshagga          ###   ########.fr       */
+/*   Updated: 2020/02/11 18:39:29 by mshagga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,6 @@ t_bot   *init_bot()
     	return (NULL);
     bot->symbol = line[10] == '1' ? 'O' : 'X';
     bot->map = NULL;
-    bot->enemy = NULL;
+//    bot->enemy = NULL;
     return (bot);
 }

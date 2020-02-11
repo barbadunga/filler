@@ -6,7 +6,7 @@
 /*   By: mshagga <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/05 21:04:43 by mshagga           #+#    #+#             */
-/*   Updated: 2020/02/10 18:43:16 by mshagga          ###   ########.fr       */
+/*   Updated: 2020/02/11 21:14:48 by mshagga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,12 @@ int		**init_board(int rows, int cols)
 	return (res);
 }
 
-void	copy_board(t_map *map, int **board, t_queue *queue)
+void	copy_board(t_map *map, int **board, t_queue *queue, char symbol)
 {
-	const int	rows = map->rows;
-	const int	cols = map->cols;
-	t_point		conv;
-	int	i;
-	int	j;
+	const int		rows = map->rows;
+	const int		cols = map->cols;
+	register int	i;
+	register int	j;
 
 	i = 0;
 	while (i < rows)
@@ -44,25 +43,20 @@ void	copy_board(t_map *map, int **board, t_queue *queue)
 		while (j < cols)
 		{
 			board[i][j] = map->map[i][j];
-			if (!board[i][j])
-			{
-				conv.xy[0] = i;
-				conv.xy[1] = j;
-				enqueue(queue, conv);
-			}
+			if ((board[i][j] >> 24u) == symbol)
+				enqueue(queue, (t_point2d){j, i});
 			j++;
 		}
 		i++;
 	}
 }
 
-void	place_token(int **board, t_map *token, t_point point, t_queue *q)
+void	place_token(int **board, t_map *token, t_point2d *point, t_queue *q, char symbol)
 {
 	const int	rows = token->rows;
 	const int	cols = token->cols;
 	int			i;
 	int			j;
-	t_point		p;
 
 	i = 0;
 	while (i < rows)
@@ -72,13 +66,9 @@ void	place_token(int **board, t_map *token, t_point point, t_queue *q)
 		{
 			if (!token->map[i][j])
 			{
-				if (board[point.xy[0] + i][point.xy[1] + j])
-				{
-					p.xy[0] = point.xy[0] + i;
-					p.xy[1] = point.xy[1] + j;
-					enqueue(q, p);
-				}
-				board[point.xy[0] + i][point.xy[1] + j] = 0;
+				if ((board[point->y + i][point->x + j] >> 24u) == '.')
+					enqueue(q, (t_point2d){point->x + j, point->y + i});
+				board[point->y + i][point->x + j] = (int)symbol << 24u;
 			}
 			j++;
 		}
@@ -86,99 +76,85 @@ void	place_token(int **board, t_map *token, t_point point, t_queue *q)
 	}
 }
 
-void	enemy_mode(int **board, int rows, int cols, t_queue *queue)
+void	init_all(t_map *board, t_bot *bot, t_queue *queue)
 {
-	t_point		conv;
-	int	i;
-	int	j;
+	const int	rows = bot->map->rows;
+	const int	cols = bot->map->cols;
+	t_point2d	points[rows * cols];
+
+	if (!board->map)
+		board->map = init_board(rows, cols);
+	board->rows = rows;
+	board->cols = cols;
+	queue->data = points;
+	queue->head = 0;
+	queue->tail = 0;
+//	initial_score(board);
+}
+
+int		check_token(t_map *b, t_map *token, t_point2d *point, char symbol)
+{
+	const int	rows = point->y;
+	const int	cols = point->x;
+	int			i;
+	int			j;
+	int			inter;
 
 	i = 0;
-	while (i < rows)
+	inter = 0;
+	while (i < token->rows)
 	{
 		j = 0;
-		while (j < cols)
+		while (j < token->cols)
 		{
-			if (board[i][j] == WALL)
-			{
-				conv.xy[0] = i;
-				conv.xy[1] = j;
-				board[i][j] = 0;
-				enqueue(queue, conv);
-			}
-			else if (!board[i][j])
-				board[i][j] = WALL;
+			if (!token->map[i][j] && (j + cols >= b->cols || i + rows >= b->rows))
+				return (0);
+			if (!token->map[i][j] && (b->map[i + rows][j + cols] >> 24u) == symbol)
+				inter++;
+			if (inter > 1)
+				return (0);
 			j++;
 		}
 		i++;
 	}
+	return (inter);
 }
 
-t_point	make_choice(t_bot *bot, t_map *token, t_point *pos, int total)
+int			get_score(t_map *board, t_map *token, t_point2d *point, t_queue *q)
 {
-	t_queue			queue;
-	static int		**board;
-	int				i;
-	int				score1, score2;
-	int				tmp1, tmp2;
-	int				res;
-	int				flag;
-
-	i = 0;
-	if (!board)
-		board = init_board(bot->map->rows, bot->map->cols);
-	score1 = INT32_MAX;
-	score2 = INT32_MIN;
-	queue.head = 0;
-	queue.tail = 0;
-	res = 0;
-	while (i < total)
-	{
-		flag = 0;
-		copy_board(bot->map, board, &queue);
-		place_token(board, token, pos[i], &queue);
-
-		reset_queue(&queue);
-		enemy_mode(board, bot->map->rows, bot->map->cols, &queue);
-		tmp1 = lee_algorithm(board, bot->map->rows, bot->map->cols, &queue);
-		if (tmp1 > score2)
-		{
-			score2 = tmp1;
-			res = i;
-		}
-		i++;
-		reset_queue(&queue);
-	}
-	return (pos[res]);
+	return (1);
 }
 
-//t_point	make_choice(t_bot *bot, t_map *token, t_point *pos, int total)
-//{
-//	t_queue			queue;
-//	static int		**board;
-//	int				i;
-//	int				score;
-//	int				tmp;
-//	int				res;
-//
-//	i = 0;
-//	if (!board)
-//		board = init_board(bot->map->rows, bot->map->cols);
-//	score = INT32_MAX;
-//	queue.head = 0;
-//	queue.tail = 0;
-//	res = 0;
-//	while (i < total)
-//	{
-//		copy_board(bot->map, board, &queue);
-//		place_token(board, token, pos[i], &queue);
-//		tmp = lee_algorithm(board, bot->map->rows, bot->map->cols, &queue);
-//		if (tmp < score)
-//		{
-//			score = tmp;
-//			res = i;
-//		}
-//		i++;
-//		reset_queue(&queue);
-//	}
-//	return (pos[res]);
-//}
+t_point2d	main_loop(t_bot *bot, t_map *token, int rows, int cols)
+{
+	static t_map	board = {NULL, 0, 0};
+	t_point2d		i;
+	t_queue			queue;
+	t_point2d		score;
+
+	init_all(&board, bot, &queue);
+	i.y = 0;
+	score.y = 0;
+	score.x = 0;
+	print_map(bot->map);
+	while (i.y < rows)
+	{
+		i.x = 0;
+		while (i.x < cols)
+		{
+			if (check_token(bot->map, token, &i, bot->symbol))
+			{
+				copy_board(bot->map, board.map, &queue, bot->symbol);
+				place_token(board.map, token, &i, &queue, bot->symbol);
+				print_map(&board);
+				write_queue(&queue);
+//				score.x = get_score(&board, token, &i, &queue);
+				score = queue.data[0];
+			}
+			reset_queue(&queue);
+			i.x++;
+		}
+		i.y++;
+	}
+	return (score);
+}

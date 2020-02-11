@@ -16,7 +16,11 @@ stdlib.h
 libft.h
 ../inc/libft.h
 
-/Users/mshagga/CLionProjects/filler/src/lee.c
+/Users/mshagga/CLionProjects/re_filler/src/algo.c
 filler.h
-/Users/mshagga/CLionProjects/filler/src/filler.h
+/Users/mshagga/CLionProjects/re_filler/src/filler.h
+
+/Users/mshagga/CLionProjects/re_filler/src/parser.c
+filler.h
+/Users/mshagga/CLionProjects/re_filler/src/filler.h
 

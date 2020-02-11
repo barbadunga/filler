@@ -6,7 +6,7 @@
 /*   By: mshagga <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/05 19:14:28 by mshagga           #+#    #+#             */
-/*   Updated: 2020/02/10 18:30:06 by mshagga          ###   ########.fr       */
+/*   Updated: 2020/02/11 20:18:05 by mshagga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,22 @@
 int		g_row[8] = {-1, 0, 1, 0, -1, -1, 1, 1};
 int		g_col[8] = {0, 1, 0, -1, -1, 1, 1, -1};
 
-void	update_cost(t_map board, int index, t_point point, t_queue *queue)
+void	update_cost(t_map board, int index, t_point2d *point, t_queue *queue)
 {
-	const int	val = board.map[point.xy[0]][point.xy[1]];
+	const int	val = board.map[point->y][point->x];
 	int			**ptr;
 	int			r;
 	int			c;
 
-	r = point.xy[0] + g_row[index];
-	c = point.xy[1] + g_col[index];
+	r = point->y + g_row[index];
+	c = point->x + g_col[index];
 	ptr = board.map;
 	if ((r >= 0 && r < board.rows && c >= 0 && c < board.cols) &&
 		ptr[r][c] == -1)
 	{
 		ptr[r][c] = val + 1;
-		enqueue(queue, (t_point){(uint64_t)c << 32u | (unsigned int)r});
+//		enqueue(queue, (t_point){(uint64_t)c << 32u | (unsigned int)r});
+		enqueue(queue, (t_point2d){r, c});
 	}
 }
 
@@ -65,9 +66,9 @@ int		count_score(int **board, int rows, int cols)
 
 int		lee_algorithm(int **board, int rows, int cols, t_queue *queue)
 {
-	int		i;
-	int		res;
-	t_point	cur;
+	int			i;
+	int			res;
+	t_point2d	cur;
 
 	while (queue->head != queue->tail)
 	{
@@ -75,7 +76,7 @@ int		lee_algorithm(int **board, int rows, int cols, t_queue *queue)
 		i = 0;
 		while (i < 8)
 		{
-			update_cost((t_map){board, rows, cols}, i, cur, queue);
+			update_cost((t_map){board, rows, cols}, i, &cur, queue);
 			i++;
 		}
 //		write_number(cur.xy[0], cur.xy[1]);

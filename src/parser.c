@@ -6,14 +6,14 @@
 /*   By: mshagga <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 16:47:56 by mshagga           #+#    #+#             */
-/*   Updated: 2020/02/10 17:19:42 by mshagga          ###   ########.fr       */
+/*   Updated: 2020/02/11 21:23:15 by mshagga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "filler.h"
 
-int		parse_map(int **ptr, int rows, char symbol, int **enemy)
+int		parse_map(int **ptr, int rows, char symbol)
 {
 	char		*line;
 	int			i;
@@ -24,27 +24,16 @@ int		parse_map(int **ptr, int rows, char symbol, int **enemy)
 	{
 		if (get_next_line(STDIN_FILENO, &line) == -1)
 			return (1);
-		line += symbol == '*' ? 0 : 4;
+		line += 4;
 		j = -1;
 		while (line[++j])
-		{
-			if (line[j] == '.')
-			{
-				ptr[i][j] = -1;
-//				enemy[i][j] = -1;
-			}
-			else
-			{
-				ptr[i][j] = ft_toupper(line[j]) == symbol ? 0 : WALL;
-//				enemy[i][j] = ft_toupper(line[j]) == symbol ? WALL : 0;
-			}
-		}
-		free(line - (symbol == '*' ? 0 : 4));
+			ptr[i][j] = ft_toupper(line[j]) << 24u;
+		free(line - 4);
 	}
 	return (0);
 }
 
-int		parse_token(int **ptr, int rows, int cols)
+int		parse_token(int **ptr, int rows)
 {
 	char	*line;
 	int		i;
@@ -79,22 +68,18 @@ t_map	*parse_input(t_bot *bot)
 		return (NULL);
 	if (!bot->map && !(bot->map = init_map(line)))
 		return (NULL);
-	if (!bot->enemy && !(bot->enemy = init_map(line)))
-		return (NULL);
 //	free(line);
 	if (get_next_line(STDIN_FILENO, &line) == -1)
 		return (NULL);
 //	free(line);
-	if (parse_map(bot->map->map, bot->map->rows, bot->symbol, bot->enemy->map))
+	if (parse_map(bot->map->map, bot->map->rows, bot->symbol))
 		return (NULL);
-//	print_map(bot->map);
+	write_line("Input");
 	if (get_next_line(STDIN_FILENO, &line) == -1)
 		return (NULL);
 	token = init_map(line);
-	if (parse_token(token->map, token->rows, token->cols))
+	if (parse_token(token->map, token->rows))
 		return (NULL);
-	//	free(line);
-//	write_line(line);
-//	print_map(token);
+//	free(line);
 	return (token);
 }
