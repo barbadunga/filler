@@ -6,7 +6,7 @@
 /*   By: mshagga <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/05 21:04:43 by mshagga           #+#    #+#             */
-/*   Updated: 2020/02/11 21:14:48 by mshagga          ###   ########.fr       */
+/*   Updated: 2020/02/12 21:57:11 by mshagga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,21 +29,27 @@ int		**init_board(int rows, int cols)
 	return (res);
 }
 
-void	copy_board(t_map *map, int **board, t_queue *queue, char symbol)
+void	copy_board(t_map *map, int **board, t_queue *queue, int flag)
 {
 	const int		rows = map->rows;
 	const int		cols = map->cols;
 	register int	i;
 	register int	j;
+	int				**ptr;
 
 	i = 0;
+	ptr = map->map;
 	while (i < rows)
 	{
 		j = 0;
 		while (j < cols)
 		{
-			board[i][j] = map->map[i][j];
-			if ((board[i][j] >> 24u) == symbol)
+			board[i][j] = ptr[i][j];
+			if (flag && !board[i][j])
+				board[i][j] = WALL;
+			else if (flag && board[i][j] == WALL)
+				board[i][j] = 0;
+			if (!board[i][j])
 				enqueue(queue, (t_point2d){j, i});
 			j++;
 		}
@@ -66,30 +72,14 @@ void	place_token(int **board, t_map *token, t_point2d *point, t_queue *q, char s
 		{
 			if (!token->map[i][j])
 			{
-				if ((board[point->y + i][point->x + j] >> 24u) == '.')
+				if (board[point->y + i][point->x + j] == -1)
 					enqueue(q, (t_point2d){point->x + j, point->y + i});
-				board[point->y + i][point->x + j] = (int)symbol << 24u;
+				board[point->y + i][point->x + j] = 0;
 			}
 			j++;
 		}
 		i++;
 	}
-}
-
-void	init_all(t_map *board, t_bot *bot, t_queue *queue)
-{
-	const int	rows = bot->map->rows;
-	const int	cols = bot->map->cols;
-	t_point2d	points[rows * cols];
-
-	if (!board->map)
-		board->map = init_board(rows, cols);
-	board->rows = rows;
-	board->cols = cols;
-	queue->data = points;
-	queue->head = 0;
-	queue->tail = 0;
-//	initial_score(board);
 }
 
 int		check_token(t_map *b, t_map *token, t_point2d *point, char symbol)
@@ -107,9 +97,9 @@ int		check_token(t_map *b, t_map *token, t_point2d *point, char symbol)
 		j = 0;
 		while (j < token->cols)
 		{
-			if (!token->map[i][j] && (j + cols >= b->cols || i + rows >= b->rows))
+			if (!token->map[i][j] && (j + cols >= b->cols || i + rows >= b->rows || b->map[i + rows][j + cols] == WALL))
 				return (0);
-			if (!token->map[i][j] && (b->map[i + rows][j + cols] >> 24u) == symbol)
+			if (!token->map[i][j] && !b->map[i + rows][j + cols])
 				inter++;
 			if (inter > 1)
 				return (0);
@@ -122,39 +112,55 @@ int		check_token(t_map *b, t_map *token, t_point2d *point, char symbol)
 
 int			get_score(t_map *board, t_map *token, t_point2d *point, t_queue *q)
 {
+	static t_map	enemy = {NULL, 0, 0};
+	t_queue			q_e;
+	t_point2d		p[board->rows * board->cols];
+
+
+	if (!enemy.map)
+		enemy.map = init_board(board->rows, board->cols);
+	enemy.rows = board->rows;
+	enemy.cols = board->cols;
+	q_e.data = p;
+	copy_board(board, enemy.map, &q_e,  TRUE);
+	lee_algorithm(board, q);
+	write_line("Mine lee:");
+	print_map(board);
+	write_queue(&q_e);
+	lee_algorithm(&enemy, &q_e);
+	write_line("Enemy lee:");
+	print_map((t_map *)&enemy);
 	return (1);
 }
 
-t_point2d	main_loop(t_bot *bot, t_map *token, int rows, int cols)
+void	main_loop(t_bot *bot, t_map *token, int rows, int cols, t_point2d *res)
 {
 	static t_map	board = {NULL, 0, 0};
 	t_point2d		i;
 	t_queue			queue;
 	t_point2d		score;
+	t_point2d		points[rows * cols];
 
-	init_all(&board, bot, &queue);
-	i.y = 0;
-	score.y = 0;
-	score.x = 0;
-	print_map(bot->map);
-	while (i.y < rows)
+	init_all(&board, bot, &queue, &score);
+	queue.data = points;
+	i.y = -1;
+	while (++i.y < rows)
 	{
-		i.x = 0;
-		while (i.x < cols)
+		i.x = -1;
+		while (++i.x < cols)
 		{
 			if (check_token(bot->map, token, &i, bot->symbol))
 			{
-				copy_board(bot->map, board.map, &queue, bot->symbol);
+				copy_board(bot->map, board.map, &queue, FALSE);
 				place_token(board.map, token, &i, &queue, bot->symbol);
-				print_map(&board);
-				write_queue(&queue);
-//				score.x = get_score(&board, token, &i, &queue);
-				score = queue.data[0];
+				score.x = get_score(&board, token, &i, &queue);
+				if (score.x < score.y)
+				{
+					score.y = score.x;
+					*res = i;
+				}
 			}
 			reset_queue(&queue);
-			i.x++;
 		}
-		i.y++;
 	}
-	return (score);
 }

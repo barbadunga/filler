@@ -35,7 +35,7 @@ void	print_map(t_map *ptr)
 	i = 0;
 	fprintf(fd, "\t");
 	for (int k = 0; k < ptr->cols; k++)
-		fprintf(fd, "%5d", k);
+		fprintf(fd, "%4d", k);
 	fprintf(fd, "\n");
 	while (i < ptr->rows)
 	{
@@ -43,7 +43,7 @@ void	print_map(t_map *ptr)
 		fprintf(fd, "%d\t", i);
 		while (j < ptr->cols)
 		{
-			fprintf(fd, "%4c|", ptr->map[i][j] >> 24u);
+			fprintf(fd, "%4d", ptr->map[i][j]);
 			j++;
 		}
 		i++;

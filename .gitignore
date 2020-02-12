@@ -2,4 +2,4 @@ filler.trace
 *.o
 cmake-build-debug
 obj
-test
+*test*

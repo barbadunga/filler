@@ -6,7 +6,7 @@
 /*   By: mshagga <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 20:04:01 by mshagga           #+#    #+#             */
-/*   Updated: 2020/02/11 20:03:15 by mshagga          ###   ########.fr       */
+/*   Updated: 2020/02/12 18:52:58 by mshagga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ typedef struct s_bot
 {
 	char    symbol;
 	t_map	*map;
-	t_queue	queue;
 }			 	t_bot;
 
 /*
@@ -64,7 +63,9 @@ typedef struct s_bot
 */
 
 t_bot   *init_bot();
-t_map	*init_map(char *plat);
+t_map	*init_map();
+void	init_all(t_map *board, t_bot *bot, t_queue *queue, t_point2d *score);
+int		**init_board(int rows, int cols);
 
 /*
 ** Parse functions
@@ -77,7 +78,7 @@ t_map	*parse_input(t_bot *bot);
 */
 
 t_point	make_choice(t_bot *bot, t_map *token, t_point *pos, int total);
-int		lee_algorithm(int **board, int rows, int cols, t_queue *queue);
+int		lee_algorithm(t_map *map, t_queue *queue);
 
 /*
 ** Debug tools
@@ -101,6 +102,6 @@ void	enqueue(t_queue *q, t_point2d point);
 void	reset_queue(t_queue *q);
 
 
-t_point2d	main_loop(t_bot *bot, t_map *token, int rows, int cols);
+void	main_loop(t_bot *bot, t_map *token, int rows, int cols, t_point2d *res);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mshagga <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 16:47:56 by mshagga           #+#    #+#             */
-/*   Updated: 2020/02/11 21:23:15 by mshagga          ###   ########.fr       */
+/*   Updated: 2020/02/12 17:59:16 by mshagga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,12 @@ int		parse_map(int **ptr, int rows, char symbol)
 		line += 4;
 		j = -1;
 		while (line[++j])
-			ptr[i][j] = ft_toupper(line[j]) << 24u;
+		{
+			if (line[j] == '.')
+				ptr[i][j] = -1;
+			else
+				ptr[i][j] = ft_toupper(line[j]) == symbol ? 0 : WALL;
+		}
 		free(line - 4);
 	}
 	return (0);
@@ -68,18 +73,15 @@ t_map	*parse_input(t_bot *bot)
 		return (NULL);
 	if (!bot->map && !(bot->map = init_map(line)))
 		return (NULL);
-//	free(line);
 	if (get_next_line(STDIN_FILENO, &line) == -1)
 		return (NULL);
-//	free(line);
 	if (parse_map(bot->map->map, bot->map->rows, bot->symbol))
 		return (NULL);
-	write_line("Input");
 	if (get_next_line(STDIN_FILENO, &line) == -1)
 		return (NULL);
-	token = init_map(line);
+	if (!(token = init_map(line)))
+		return (NULL);
 	if (parse_token(token->map, token->rows))
 		return (NULL);
-//	free(line);
 	return (token);
 }

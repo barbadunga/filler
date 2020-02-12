@@ -6,7 +6,7 @@
 /*   By: mshagga <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 17:05:22 by mshagga           #+#    #+#             */
-/*   Updated: 2020/02/11 21:09:58 by mshagga          ###   ########.fr       */
+/*   Updated: 2020/02/12 19:42:36 by mshagga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int		main(void)
 {
 	t_bot		*bot;
 	t_map		*token;
-	t_vec		*pos;
 	t_point2d	res;
 	int			i; // delete
 
@@ -37,7 +36,9 @@ int		main(void)
 	while (TRUE)
 	{
 		token = parse_input(bot);
-		res = main_loop(bot, token, bot->map->rows, bot->map->cols);
+		res.x = -1;
+		res.y = -1;
+		main_loop(bot, token, bot->map->rows, bot->map->cols, &res);
 		if (write_move(res))
 			break;
 		i++;
