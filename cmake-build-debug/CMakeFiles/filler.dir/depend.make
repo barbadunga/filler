@@ -29,3 +29,7 @@ CMakeFiles/filler.dir/src/queue.c.o: ../Libft/libft.h
 CMakeFiles/filler.dir/src/queue.c.o: ../inc/filler.h
 CMakeFiles/filler.dir/src/queue.c.o: ../src/queue.c
 
+CMakeFiles/filler.dir/src/utils.c.o: ../Libft/libft.h
+CMakeFiles/filler.dir/src/utils.c.o: ../inc/filler.h
+CMakeFiles/filler.dir/src/utils.c.o: ../src/utils.c
+

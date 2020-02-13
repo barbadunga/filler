@@ -6,23 +6,22 @@
 /*   By: mshagga <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 16:47:56 by mshagga           #+#    #+#             */
-/*   Updated: 2020/02/12 17:59:16 by mshagga          ###   ########.fr       */
+/*   Updated: 2020/02/13 22:46:28 by mshagga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "filler.h"
 
 int		parse_map(int **ptr, int rows, char symbol)
 {
-	char		*line;
-	int			i;
-	int 		j;
+	register int	i;
+	register int	j;
+	char			*line;
 
 	i = -1;
 	while (++i < rows)
 	{
-		if (get_next_line(STDIN_FILENO, &line) == -1)
+		if (get_next_line(STDIN_FILENO, &line) != 1)
 			return (1);
 		line += 4;
 		j = -1;
@@ -40,15 +39,18 @@ int		parse_map(int **ptr, int rows, char symbol)
 
 int		parse_token(int **ptr, int rows)
 {
-	char	*line;
-	int		i;
-	int		j;
+	register int	i;
+	register int	j;
+	char			*line;
 
 	i = 0;
 	while (i < rows)
 	{
-		if (get_next_line(STDIN_FILENO, &line) == -1)
+		if (get_next_line(STDIN_FILENO, &line) != 1)
+		{
+			free_2d(ptr, rows, NULL);
 			return (1);
+		}
 		j = 0;
 		while (line[j])
 		{
@@ -69,18 +71,25 @@ t_map	*parse_input(t_bot *bot)
 	char	*line;
 	t_map	*token;
 
-	if (get_next_line(STDIN_FILENO, &line) == -1)
+	if (get_next_line(STDIN_FILENO, &line) != 1)
 		return (NULL);
 	if (!bot->map && !(bot->map = init_map(line)))
 		return (NULL);
-	if (get_next_line(STDIN_FILENO, &line) == -1)
+	free(line);
+	if (get_next_line(STDIN_FILENO, &line) != 1 &&
+		!free_2d(bot->map->map, bot->map->rows, bot->map))
 		return (NULL);
-	if (parse_map(bot->map->map, bot->map->rows, bot->symbol))
+	free(line);
+	if (parse_map(bot->map->map, bot->map->rows, bot->symbol) &&
+		!free_2d(bot->map->map, bot->map->rows, bot->map))
 		return (NULL);
-	if (get_next_line(STDIN_FILENO, &line) == -1)
+	if (get_next_line(STDIN_FILENO, &line) != 1 &&
+		!free_2d(bot->map->map, bot->map->rows, bot->map))
 		return (NULL);
-	if (!(token = init_map(line)))
+	if (!(token = init_map(line)) &&
+		!free_2d(bot->map->map, bot->map->rows, bot->map))
 		return (NULL);
+	free(line);
 	if (parse_token(token->map, token->rows))
 		return (NULL);
 	return (token);

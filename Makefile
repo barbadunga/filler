@@ -6,7 +6,7 @@
 #    By: mshagga <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/29 17:21:59 by mshagga           #+#    #+#              #
-#    Updated: 2020/02/10 16:57:35 by mshagga          ###   ########.fr        #
+#    Updated: 2020/02/13 17:34:59 by mshagga          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ SRC_LIST =	main.c \
 			algo.c \
 			parser.c \
 			queue.c \
+			utils.c \
 
 INC_LIST = filler.h
 OBJ_LIST = $(patsubst %.c, %.o, $(SRC_LIST))

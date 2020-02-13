@@ -6,7 +6,7 @@
 /*   By: mshagga <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 20:04:01 by mshagga           #+#    #+#             */
-/*   Updated: 2020/02/12 18:52:58 by mshagga          ###   ########.fr       */
+/*   Updated: 2020/02/13 22:54:08 by mshagga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,8 @@ typedef struct s_bot
 ** Init bot and map functions
 */
 
-t_bot   *init_bot();
-t_map	*init_map();
+t_bot   *init_bot(void);
+t_map	*init_map(char *plat);
 void	init_all(t_map *board, t_bot *bot, t_queue *queue, t_point2d *score);
 int		**init_board(int rows, int cols);
 
@@ -78,7 +78,7 @@ t_map	*parse_input(t_bot *bot);
 */
 
 t_point	make_choice(t_bot *bot, t_map *token, t_point *pos, int total);
-int		lee_algorithm(t_map *map, t_queue *queue);
+void	lee_algorithm(t_map *map, t_queue *queue);
 
 /*
 ** Debug tools
@@ -86,7 +86,7 @@ int		lee_algorithm(t_map *map, t_queue *queue);
 
 void	bot_info(t_bot *bot);
 void	write_line(char *line);
-void	debug_init();
+void	debug_init(void);
 void	print_map(t_map *ptr);
 void	write_number(int n1, int n2);
 void	write_vec(t_vec *pos);
@@ -102,6 +102,8 @@ void	enqueue(t_queue *q, t_point2d point);
 void	reset_queue(t_queue *q);
 
 
-void	main_loop(t_bot *bot, t_map *token, int rows, int cols, t_point2d *res);
+void	main_loop(t_bot *bot, t_map *token, t_point2d *res);
+void	*free_2d(int **arr, int rows, t_map *map);
+void	copy_board(t_map *map, int **board, t_queue *queue, int flag);
 
 #endif

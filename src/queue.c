@@ -10,10 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "filler.h"
 
-void	enqueue(t_queue *q, t_point2d point)
+void		enqueue(t_queue *q, t_point2d point)
 {
 	if (q->tail >= MAX_CELLS)
 		return ;
@@ -25,7 +24,7 @@ t_point2d	dequeue(t_queue *q)
 	return (q->data[q->head++]);
 }
 
-void	reset_queue(t_queue *q)
+void		reset_queue(t_queue *q)
 {
 	q->head = 0;
 	q->tail = 0;

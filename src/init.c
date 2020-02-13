@@ -6,7 +6,7 @@
 /*   By: mshagga <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/03 18:11:19 by mshagga           #+#    #+#             */
-/*   Updated: 2020/02/12 18:06:32 by mshagga          ###   ########.fr       */
+/*   Updated: 2020/02/13 22:35:43 by mshagga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 t_map	*init_map(char *plat)
 {
-	t_map	*map;
-	int		i;
+	register int	i;
+	t_map			*map;
 
 	if (!(map = (t_map *)malloc(sizeof(t_map))))
 		return (NULL);
@@ -26,29 +26,36 @@ t_map	*init_map(char *plat)
 		plat++;
 	map->cols = ft_atoi(plat);
 	if (!(map->map = (int **)malloc(sizeof(int*) * map->rows)))
-		return (NULL);
-	i = 0;
-	while (i < map->rows)
 	{
-		if (!(map->map[i] = (int *)ft_memalloc(sizeof(int) * map->cols)))
-			return (NULL);
-		i++;
+		free(map);
+		return (NULL);
 	}
+	i = -1;
+	while (++i < map->rows)
+		if (!(map->map[i] = (int *)ft_memalloc(sizeof(int) * map->cols)))
+		{
+			free_2d(map->map, map->rows, map);
+			return (NULL);
+		}
 	return (map);
 }
 
-t_bot   *init_bot()
+t_bot	*init_bot(void)
 {
-    t_bot   *bot;
-    char    *line;
+	t_bot	*bot;
+	char	*line;
 
-    if (!(bot = (t_bot*)malloc(sizeof(t_bot))))
-        return (NULL);
-    if (!(get_next_line(STDIN_FILENO, &line)))
-    	return (NULL);
-    bot->symbol = line[10] == '1' ? 'O' : 'X';
-    bot->map = NULL;
-    return (bot);
+	if (!(bot = (t_bot*)malloc(sizeof(t_bot))))
+		return (NULL);
+	if (get_next_line(STDIN_FILENO, &line) != 1)
+	{
+		free(bot);
+		return (NULL);
+	}
+	bot->symbol = line[10] == '1' ? 'O' : 'X';
+	bot->map = NULL;
+	free(line);
+	return (bot);
 }
 
 void	init_all(t_map *board, t_bot *bot, t_queue *queue, t_point2d *score)
@@ -60,9 +67,29 @@ void	init_all(t_map *board, t_bot *bot, t_queue *queue, t_point2d *score)
 		board->map = init_board(rows, cols);
 	board->rows = rows;
 	board->cols = cols;
+	score->y = INT32_MIN;
 	queue->head = 0;
 	queue->tail = 0;
 	score->x = -1;
-	score->y = -1;
-//	initial_score(board);
+	score->y = INT32_MIN;
+}
+
+int		**init_board(int rows, int cols)
+{
+	register int	i;
+	int				**res;
+
+	if (!(res = (int**)malloc(sizeof(int*) * rows)))
+		return (NULL);
+	i = 0;
+	while (i < rows)
+	{
+		if (!(res[i] = (int*)malloc(sizeof(int) * cols)))
+		{
+			free_2d(res, rows, NULL);
+			return (NULL);
+		}
+		i++;
+	}
+	return (res);
 }
