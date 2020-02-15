@@ -123,221 +123,113 @@ filler/fast:
 	$(MAKE) -f CMakeFiles/filler.dir/build.make CMakeFiles/filler.dir/build
 .PHONY : filler/fast
 
-src/algo.o: src/algo.c.o
+vis/src/event_handler.o: vis/src/event_handler.c.o
 
-.PHONY : src/algo.o
-
-# target to build an object file
-src/algo.c.o:
-	$(MAKE) -f CMakeFiles/filler.dir/build.make CMakeFiles/filler.dir/src/algo.c.o
-.PHONY : src/algo.c.o
-
-src/algo.i: src/algo.c.i
-
-.PHONY : src/algo.i
-
-# target to preprocess a source file
-src/algo.c.i:
-	$(MAKE) -f CMakeFiles/filler.dir/build.make CMakeFiles/filler.dir/src/algo.c.i
-.PHONY : src/algo.c.i
-
-src/algo.s: src/algo.c.s
-
-.PHONY : src/algo.s
-
-# target to generate assembly for a file
-src/algo.c.s:
-	$(MAKE) -f CMakeFiles/filler.dir/build.make CMakeFiles/filler.dir/src/algo.c.s
-.PHONY : src/algo.c.s
-
-src/debug.o: src/debug.c.o
-
-.PHONY : src/debug.o
+.PHONY : vis/src/event_handler.o
 
 # target to build an object file
-src/debug.c.o:
-	$(MAKE) -f CMakeFiles/filler.dir/build.make CMakeFiles/filler.dir/src/debug.c.o
-.PHONY : src/debug.c.o
+vis/src/event_handler.c.o:
+	$(MAKE) -f CMakeFiles/filler.dir/build.make CMakeFiles/filler.dir/vis/src/event_handler.c.o
+.PHONY : vis/src/event_handler.c.o
 
-src/debug.i: src/debug.c.i
+vis/src/event_handler.i: vis/src/event_handler.c.i
 
-.PHONY : src/debug.i
+.PHONY : vis/src/event_handler.i
 
 # target to preprocess a source file
-src/debug.c.i:
-	$(MAKE) -f CMakeFiles/filler.dir/build.make CMakeFiles/filler.dir/src/debug.c.i
-.PHONY : src/debug.c.i
+vis/src/event_handler.c.i:
+	$(MAKE) -f CMakeFiles/filler.dir/build.make CMakeFiles/filler.dir/vis/src/event_handler.c.i
+.PHONY : vis/src/event_handler.c.i
 
-src/debug.s: src/debug.c.s
+vis/src/event_handler.s: vis/src/event_handler.c.s
 
-.PHONY : src/debug.s
+.PHONY : vis/src/event_handler.s
 
 # target to generate assembly for a file
-src/debug.c.s:
-	$(MAKE) -f CMakeFiles/filler.dir/build.make CMakeFiles/filler.dir/src/debug.c.s
-.PHONY : src/debug.c.s
+vis/src/event_handler.c.s:
+	$(MAKE) -f CMakeFiles/filler.dir/build.make CMakeFiles/filler.dir/vis/src/event_handler.c.s
+.PHONY : vis/src/event_handler.c.s
 
-src/init.o: src/init.c.o
+vis/src/main.o: vis/src/main.c.o
 
-.PHONY : src/init.o
+.PHONY : vis/src/main.o
 
 # target to build an object file
-src/init.c.o:
-	$(MAKE) -f CMakeFiles/filler.dir/build.make CMakeFiles/filler.dir/src/init.c.o
-.PHONY : src/init.c.o
+vis/src/main.c.o:
+	$(MAKE) -f CMakeFiles/filler.dir/build.make CMakeFiles/filler.dir/vis/src/main.c.o
+.PHONY : vis/src/main.c.o
 
-src/init.i: src/init.c.i
+vis/src/main.i: vis/src/main.c.i
 
-.PHONY : src/init.i
+.PHONY : vis/src/main.i
 
 # target to preprocess a source file
-src/init.c.i:
-	$(MAKE) -f CMakeFiles/filler.dir/build.make CMakeFiles/filler.dir/src/init.c.i
-.PHONY : src/init.c.i
+vis/src/main.c.i:
+	$(MAKE) -f CMakeFiles/filler.dir/build.make CMakeFiles/filler.dir/vis/src/main.c.i
+.PHONY : vis/src/main.c.i
 
-src/init.s: src/init.c.s
+vis/src/main.s: vis/src/main.c.s
 
-.PHONY : src/init.s
+.PHONY : vis/src/main.s
 
 # target to generate assembly for a file
-src/init.c.s:
-	$(MAKE) -f CMakeFiles/filler.dir/build.make CMakeFiles/filler.dir/src/init.c.s
-.PHONY : src/init.c.s
+vis/src/main.c.s:
+	$(MAKE) -f CMakeFiles/filler.dir/build.make CMakeFiles/filler.dir/vis/src/main.c.s
+.PHONY : vis/src/main.c.s
 
-src/lee.o: src/lee.c.o
+vis/src/parser.o: vis/src/parser.c.o
 
-.PHONY : src/lee.o
+.PHONY : vis/src/parser.o
 
 # target to build an object file
-src/lee.c.o:
-	$(MAKE) -f CMakeFiles/filler.dir/build.make CMakeFiles/filler.dir/src/lee.c.o
-.PHONY : src/lee.c.o
+vis/src/parser.c.o:
+	$(MAKE) -f CMakeFiles/filler.dir/build.make CMakeFiles/filler.dir/vis/src/parser.c.o
+.PHONY : vis/src/parser.c.o
 
-src/lee.i: src/lee.c.i
+vis/src/parser.i: vis/src/parser.c.i
 
-.PHONY : src/lee.i
+.PHONY : vis/src/parser.i
 
 # target to preprocess a source file
-src/lee.c.i:
-	$(MAKE) -f CMakeFiles/filler.dir/build.make CMakeFiles/filler.dir/src/lee.c.i
-.PHONY : src/lee.c.i
+vis/src/parser.c.i:
+	$(MAKE) -f CMakeFiles/filler.dir/build.make CMakeFiles/filler.dir/vis/src/parser.c.i
+.PHONY : vis/src/parser.c.i
 
-src/lee.s: src/lee.c.s
+vis/src/parser.s: vis/src/parser.c.s
 
-.PHONY : src/lee.s
+.PHONY : vis/src/parser.s
 
 # target to generate assembly for a file
-src/lee.c.s:
-	$(MAKE) -f CMakeFiles/filler.dir/build.make CMakeFiles/filler.dir/src/lee.c.s
-.PHONY : src/lee.c.s
+vis/src/parser.c.s:
+	$(MAKE) -f CMakeFiles/filler.dir/build.make CMakeFiles/filler.dir/vis/src/parser.c.s
+.PHONY : vis/src/parser.c.s
 
-src/main.o: src/main.c.o
+vis/src/render.o: vis/src/render.c.o
 
-.PHONY : src/main.o
+.PHONY : vis/src/render.o
 
 # target to build an object file
-src/main.c.o:
-	$(MAKE) -f CMakeFiles/filler.dir/build.make CMakeFiles/filler.dir/src/main.c.o
-.PHONY : src/main.c.o
+vis/src/render.c.o:
+	$(MAKE) -f CMakeFiles/filler.dir/build.make CMakeFiles/filler.dir/vis/src/render.c.o
+.PHONY : vis/src/render.c.o
 
-src/main.i: src/main.c.i
+vis/src/render.i: vis/src/render.c.i
 
-.PHONY : src/main.i
-
-# target to preprocess a source file
-src/main.c.i:
-	$(MAKE) -f CMakeFiles/filler.dir/build.make CMakeFiles/filler.dir/src/main.c.i
-.PHONY : src/main.c.i
-
-src/main.s: src/main.c.s
-
-.PHONY : src/main.s
-
-# target to generate assembly for a file
-src/main.c.s:
-	$(MAKE) -f CMakeFiles/filler.dir/build.make CMakeFiles/filler.dir/src/main.c.s
-.PHONY : src/main.c.s
-
-src/parser.o: src/parser.c.o
-
-.PHONY : src/parser.o
-
-# target to build an object file
-src/parser.c.o:
-	$(MAKE) -f CMakeFiles/filler.dir/build.make CMakeFiles/filler.dir/src/parser.c.o
-.PHONY : src/parser.c.o
-
-src/parser.i: src/parser.c.i
-
-.PHONY : src/parser.i
+.PHONY : vis/src/render.i
 
 # target to preprocess a source file
-src/parser.c.i:
-	$(MAKE) -f CMakeFiles/filler.dir/build.make CMakeFiles/filler.dir/src/parser.c.i
-.PHONY : src/parser.c.i
+vis/src/render.c.i:
+	$(MAKE) -f CMakeFiles/filler.dir/build.make CMakeFiles/filler.dir/vis/src/render.c.i
+.PHONY : vis/src/render.c.i
 
-src/parser.s: src/parser.c.s
+vis/src/render.s: vis/src/render.c.s
 
-.PHONY : src/parser.s
-
-# target to generate assembly for a file
-src/parser.c.s:
-	$(MAKE) -f CMakeFiles/filler.dir/build.make CMakeFiles/filler.dir/src/parser.c.s
-.PHONY : src/parser.c.s
-
-src/queue.o: src/queue.c.o
-
-.PHONY : src/queue.o
-
-# target to build an object file
-src/queue.c.o:
-	$(MAKE) -f CMakeFiles/filler.dir/build.make CMakeFiles/filler.dir/src/queue.c.o
-.PHONY : src/queue.c.o
-
-src/queue.i: src/queue.c.i
-
-.PHONY : src/queue.i
-
-# target to preprocess a source file
-src/queue.c.i:
-	$(MAKE) -f CMakeFiles/filler.dir/build.make CMakeFiles/filler.dir/src/queue.c.i
-.PHONY : src/queue.c.i
-
-src/queue.s: src/queue.c.s
-
-.PHONY : src/queue.s
+.PHONY : vis/src/render.s
 
 # target to generate assembly for a file
-src/queue.c.s:
-	$(MAKE) -f CMakeFiles/filler.dir/build.make CMakeFiles/filler.dir/src/queue.c.s
-.PHONY : src/queue.c.s
-
-src/utils.o: src/utils.c.o
-
-.PHONY : src/utils.o
-
-# target to build an object file
-src/utils.c.o:
-	$(MAKE) -f CMakeFiles/filler.dir/build.make CMakeFiles/filler.dir/src/utils.c.o
-.PHONY : src/utils.c.o
-
-src/utils.i: src/utils.c.i
-
-.PHONY : src/utils.i
-
-# target to preprocess a source file
-src/utils.c.i:
-	$(MAKE) -f CMakeFiles/filler.dir/build.make CMakeFiles/filler.dir/src/utils.c.i
-.PHONY : src/utils.c.i
-
-src/utils.s: src/utils.c.s
-
-.PHONY : src/utils.s
-
-# target to generate assembly for a file
-src/utils.c.s:
-	$(MAKE) -f CMakeFiles/filler.dir/build.make CMakeFiles/filler.dir/src/utils.c.s
-.PHONY : src/utils.c.s
+vis/src/render.c.s:
+	$(MAKE) -f CMakeFiles/filler.dir/build.make CMakeFiles/filler.dir/vis/src/render.c.s
+.PHONY : vis/src/render.c.s
 
 # Help Target
 help:
@@ -348,30 +240,18 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... filler"
-	@echo "... src/algo.o"
-	@echo "... src/algo.i"
-	@echo "... src/algo.s"
-	@echo "... src/debug.o"
-	@echo "... src/debug.i"
-	@echo "... src/debug.s"
-	@echo "... src/init.o"
-	@echo "... src/init.i"
-	@echo "... src/init.s"
-	@echo "... src/lee.o"
-	@echo "... src/lee.i"
-	@echo "... src/lee.s"
-	@echo "... src/main.o"
-	@echo "... src/main.i"
-	@echo "... src/main.s"
-	@echo "... src/parser.o"
-	@echo "... src/parser.i"
-	@echo "... src/parser.s"
-	@echo "... src/queue.o"
-	@echo "... src/queue.i"
-	@echo "... src/queue.s"
-	@echo "... src/utils.o"
-	@echo "... src/utils.i"
-	@echo "... src/utils.s"
+	@echo "... vis/src/event_handler.o"
+	@echo "... vis/src/event_handler.i"
+	@echo "... vis/src/event_handler.s"
+	@echo "... vis/src/main.o"
+	@echo "... vis/src/main.i"
+	@echo "... vis/src/main.s"
+	@echo "... vis/src/parser.o"
+	@echo "... vis/src/parser.i"
+	@echo "... vis/src/parser.s"
+	@echo "... vis/src/render.o"
+	@echo "... vis/src/render.i"
+	@echo "... vis/src/render.s"
 .PHONY : help
 
 

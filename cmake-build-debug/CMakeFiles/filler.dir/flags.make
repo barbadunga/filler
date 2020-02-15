@@ -6,5 +6,5 @@ C_FLAGS = -g   -std=gnu99
 
 C_DEFINES = 
 
-C_INCLUDES = -I/Users/mshagga/CLionProjects/re_filler/inc -I/Users/mshagga/CLionProjects/re_filler/Libft 
+C_INCLUDES = -I/Users/mshagga/CLionProjects/re_filler/inc -I/Users/mshagga/CLionProjects/re_filler/Libft -I/Users/mshagga/.brew/include -I/Users/mshagga/CLionProjects/re_filler/vis/inc 
 

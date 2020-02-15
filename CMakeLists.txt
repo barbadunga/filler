@@ -5,7 +5,13 @@ set(CMAKE_C_STANDARD 99)
 
 include_directories(inc)
 include_directories(Libft/)
+include_directories(~/.brew/include/)
+include_directories(vis/inc)
 aux_source_directory(src sources)
-add_executable(filler ${sources})
+aux_source_directory(${PROJECT_SOURCE_DIR}/vis/src visualizer)
+
+add_executable(filler ${visualizer})
 
 target_link_libraries(filler ${PROJECT_SOURCE_DIR}/Libft/libft.a)
+target_link_libraries(filler /Users/mshagga/.brew/lib/libSDL2.a)
+target_link_libraries(filler /Users/mshagga/.brew/lib/libSDL2_ttf.a)

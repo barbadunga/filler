@@ -46,6 +46,8 @@
 				<Compiler>
 					<Add directory="/Users/mshagga/CLionProjects/re_filler/inc"/>
 					<Add directory="/Users/mshagga/CLionProjects/re_filler/Libft"/>
+					<Add directory="/Users/mshagga/.brew/include"/>
+					<Add directory="/Users/mshagga/CLionProjects/re_filler/vis/inc"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/include"/>
@@ -70,6 +72,8 @@
 				<Compiler>
 					<Add directory="/Users/mshagga/CLionProjects/re_filler/inc"/>
 					<Add directory="/Users/mshagga/CLionProjects/re_filler/Libft"/>
+					<Add directory="/Users/mshagga/.brew/include"/>
+					<Add directory="/Users/mshagga/CLionProjects/re_filler/vis/inc"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/include"/>
@@ -86,28 +90,16 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/mshagga/CLionProjects/re_filler/src/algo.c">
+		<Unit filename="/Users/mshagga/CLionProjects/re_filler/vis/src/event_handler.c">
 			<Option target="filler"/>
 		</Unit>
-		<Unit filename="/Users/mshagga/CLionProjects/re_filler/src/debug.c">
+		<Unit filename="/Users/mshagga/CLionProjects/re_filler/vis/src/main.c">
 			<Option target="filler"/>
 		</Unit>
-		<Unit filename="/Users/mshagga/CLionProjects/re_filler/src/init.c">
+		<Unit filename="/Users/mshagga/CLionProjects/re_filler/vis/src/parser.c">
 			<Option target="filler"/>
 		</Unit>
-		<Unit filename="/Users/mshagga/CLionProjects/re_filler/src/lee.c">
-			<Option target="filler"/>
-		</Unit>
-		<Unit filename="/Users/mshagga/CLionProjects/re_filler/src/main.c">
-			<Option target="filler"/>
-		</Unit>
-		<Unit filename="/Users/mshagga/CLionProjects/re_filler/src/parser.c">
-			<Option target="filler"/>
-		</Unit>
-		<Unit filename="/Users/mshagga/CLionProjects/re_filler/src/queue.c">
-			<Option target="filler"/>
-		</Unit>
-		<Unit filename="/Users/mshagga/CLionProjects/re_filler/src/utils.c">
+		<Unit filename="/Users/mshagga/CLionProjects/re_filler/vis/src/render.c">
 			<Option target="filler"/>
 		</Unit>
 		<Unit filename="/Users/mshagga/CLionProjects/re_filler/CMakeLists.txt">
