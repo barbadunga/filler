@@ -6,7 +6,7 @@
 /*   By: mshagga <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 20:55:43 by mshagga           #+#    #+#             */
-/*   Updated: 2020/02/16 00:27:00 by mshagga          ###   ########.fr       */
+/*   Updated: 2020/02/16 18:41:40 by mshagga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,33 @@ void	draw_rect(SDL_Surface *sur, SDL_Rect *rect, SDL_Color col)
 	SDL_FillRect(sur, rect, pixel_value);
 }
 
+void	print_shaded(t_vis *vis, const char *text, t_point point, SDL_Color col)
+{
+	SDL_Surface	*tmp_sur;
+	SDL_Rect	position;
+	int			w;
+	int			h;
+
+	if (TTF_SizeText(vis->title, text, &w, &h) == -1)
+		free_vis(vis);
+	if (!(tmp_sur = TTF_RenderText_Shaded(vis->title, text, g_black, col)))
+		free_vis(vis);
+	position.x = point.x - w / 2;
+	position.y = point.y - h / 2;
+	SDL_BlitSurface(tmp_sur, NULL, vis->sur, &position);
+	SDL_FreeSurface(tmp_sur);
+}
+
 void	draw_ui(t_vis *vis)
 {
-	static int i;
+	const int	center_x = WIDTH / 2;
 
-	i++;
-	print_text(vis, "filler", (t_point){WIDTH / 2, 25}, g_white);
-	print_text(vis, vis->p1, (t_point){200, vis->ui->frame.y - 50}, g_mint);
-	print_text(vis, vis->p2, (t_point){WIDTH - 100, vis->ui->frame.y - 50}, g_pink);
+	draw_rect(vis->sur, NULL, g_black);
+	draw_rect(vis->sur, &vis->ui->frame, g_purple);
+	draw_rect(vis->sur, &vis->ui->plat, g_dark_purple);
+//	print_text(vis, "filler", (t_point){WIDTH / 2, 25}, g_purple);
+	print_text(vis, vis->p1, (t_point){center_x / 2, vis->ui->frame.y - 75}, g_mint);
+	print_text(vis, vis->p2, (t_point){center_x + center_x / 2, vis->ui->frame.y - 75}, g_pink);
 }
 
 SDL_Color	get_color(char c)
@@ -71,7 +90,6 @@ void		draw_grid(SDL_Surface *sur, t_board *board, SDL_Rect cell, int gap)
 		cell.x = start_x;
 		while (j < cols)
 		{
-//			if (board->tab[i][j] != '.')
 				draw_rect(sur, &cell, get_color(board->tab[i][j]));
 			cell.x += gap + cell.w;
 			j++;
@@ -81,16 +99,26 @@ void		draw_grid(SDL_Surface *sur, t_board *board, SDL_Rect cell, int gap)
 	}
 }
 
-void	render(t_vis *vis, t_board *board, t_ui *ui)
+void	update_info(t_vis *vis, t_board *board)
 {
-//	draw_rect(vis->sur, NULL, g_bg);
-//	draw_ui(vis);
-	draw_rect(vis->sur, &ui->frame, g_purple);
-	draw_rect(vis->sur, &ui->plat, g_dark_purple);
-	draw_grid(vis->sur, board, ui->cell, ui->gap);
+	char		*score;
+	const int	ctr = WIDTH / 2;
+
+	if (!(score = ft_itoa(board->score1)))
+		free_vis(vis);
+	print_text(vis, score, (t_point){ctr / 2, vis->ui->frame.y - 25}, board->score1 > board->score2 ? g_yellow : g_white);
+	free(score);
+	if (!(score = ft_itoa(board->score2)))
+		free_vis(vis);
+	print_text(vis, score, (t_point){ctr + ctr / 2, vis->ui->frame.y - 25}, board->score2 > board->score1 ? g_yellow : g_white);
 }
 
-
+void	render(t_vis *vis, t_board *board, t_ui *ui)
+{
+	draw_ui(vis);
+	update_info(vis, board);
+	draw_grid(vis->sur, board, ui->cell, ui->gap);
+}
 
 void	print_text(t_vis *vis, const char *text, t_point point, SDL_Color col)
 {

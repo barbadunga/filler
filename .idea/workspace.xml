@@ -15,18 +15,17 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/filler.dir/C.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/filler.dir/C.includecache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/filler.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/filler.dir/DependInfo.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/filler.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/filler.dir/build.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/filler.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/filler.dir/cmake_clean.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/filler.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/filler.dir/depend.internal" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/filler.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/filler.dir/depend.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/filler.dir/flags.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/filler.dir/flags.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/filler.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/filler.dir/link.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/filler.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/filler.dir/progress.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/filler.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/filler.cbp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vis/inc/visualizer.h" beforeDir="false" afterPath="$PROJECT_DIR$/vis/inc/visualizer.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vis/src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/vis/src/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vis/src/render.c" beforeDir="false" afterPath="$PROJECT_DIR$/vis/src/render.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +110,10 @@
       <workItem from="1581603437490" duration="6875000" />
       <workItem from="1581615322005" duration="7523000" />
       <workItem from="1581699086228" duration="11095000" />
-      <workItem from="1581769326930" duration="28185000" />
+      <workItem from="1581769326930" duration="28411000" />
+      <workItem from="1581860433585" duration="888000" />
+      <workItem from="1581861525042" duration="3172000" />
+      <workItem from="1582198527245" duration="98000" />
     </task>
     <servers />
   </component>
@@ -192,13 +194,13 @@
     </state>
     <state x="580" y="227" key="SettingsEditor/0.0.2560.1360@0.0.2560.1360" timestamp="1580821834013" />
     <state x="580" y="246" key="SettingsEditor/0.23.2560.1337@0.23.2560.1337" timestamp="1580821787537" />
-    <state x="959" y="523" key="com.intellij.ide.util.TipDialog" timestamp="1581769355222">
+    <state x="767" y="401" key="com.intellij.ide.util.TipDialog" timestamp="1581861662725">
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
     <state x="767" y="401" key="com.intellij.ide.util.TipDialog/0.0.2048.1072@0.0.2048.1072" timestamp="1580994683019" />
     <state x="767" y="401" key="com.intellij.ide.util.TipDialog/0.0.2560.1360@0.0.2560.1360" timestamp="1581603448138" />
     <state x="1079" y="576" key="com.intellij.ide.util.TipDialog/0.0.2880.1540@0.0.2880.1540" timestamp="1581347963922" />
-    <state x="959" y="523" key="com.intellij.ide.util.TipDialog/0.23.2560.1337@0.23.2560.1337" timestamp="1581769355222" />
+    <state x="767" y="401" key="com.intellij.ide.util.TipDialog/0.23.2560.1337@0.23.2560.1337" timestamp="1581861662725" />
     <state x="1079" y="590" key="com.intellij.ide.util.TipDialog/0.23.2880.1517@0.23.2880.1517" timestamp="1581347268282" />
     <state x="946" y="327" width="667" height="729" key="find.popup" timestamp="1581621689839">
       <screen x="0" y="23" width="2560" height="1337" />

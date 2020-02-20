@@ -6,7 +6,7 @@
 /*   By: mshagga <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 19:38:31 by mshagga           #+#    #+#             */
-/*   Updated: 2020/02/15 22:21:16 by mshagga          ###   ########.fr       */
+/*   Updated: 2020/02/16 18:24:50 by mshagga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,32 @@ static void	push_board(t_vis *vis, t_board *board)
 	}
 }
 
+static void	parse_score(t_board *board)
+{
+	char			**ptr;
+	const int		rows = board->row;
+	const int		cols = board->col;
+	register int	i;
+	register int	j;
 
+	i = 0;
+	ptr = board->tab;
+	while (i < rows)
+	{
+		j = 0;
+		while (j < cols)
+		{
+			if (ptr[i][j] == 'X' || ptr[i][j] == 'x')
+				board->score2++;
+			else if (ptr[i][j] == 'O' || ptr[i][j] == 'o')
+				board->score1++;
+			j++;
+		}
+		i++;
+	}
+	board->score1--;
+	board->score2--;
+}
 
 void	parse_board(t_vis *vis)
 {
@@ -80,6 +105,7 @@ void	parse_board(t_vis *vis)
 			get_size(board, line);
 			free(line);
 			get_board(vis, board);
+			parse_score(board);
 			push_board(vis, board);
 		}
 		else

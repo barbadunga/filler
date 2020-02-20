@@ -6,18 +6,11 @@
 /*   By: mshagga <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 16:05:59 by mshagga           #+#    #+#             */
-/*   Updated: 2020/02/16 00:33:52 by mshagga          ###   ########.fr       */
+/*   Updated: 2020/02/16 18:48:16 by mshagga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "visualizer.h"
-
-static t_board	*load_next_board(t_vis *vis)
-{
-	if (vis->board->next == NULL)
-		parse_board(vis);
-	return (vis->board->next ? vis->board->next : vis->board);
-}
 
 void	keyboard_handle(t_vis *vis, SDL_Event *event)
 {
@@ -37,6 +30,11 @@ void	keyboard_handle(t_vis *vis, SDL_Event *event)
 	{
 		while (vis->board->prev)
 			vis->board = vis->board->prev;
+	}
+	else if (event->key.keysym.scancode == SDL_SCANCODE_E)
+	{
+		while (vis->board->next)
+			vis->board = vis->board->next;
 	}
 }
 
@@ -60,5 +58,10 @@ void	event_loop(t_vis *vis)
 			vis->is_close = 1;
 	}
 	if (!vis->is_pause)
-		vis->board = load_next_board(vis);
+	{
+		if (!vis->board->next)
+			parse_board(vis);
+		else
+			vis->board = vis->board->next ? vis->board->next : vis->board;
+	}
 }
