@@ -6,11 +6,35 @@
 /*   By: mshagga <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/03 18:11:19 by mshagga           #+#    #+#             */
-/*   Updated: 2020/02/13 22:35:43 by mshagga          ###   ########.fr       */
+/*   Updated: 2020/02/20 22:51:26 by mshagga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
+
+static int	parse_plateau(t_map *map, char *plat)
+{
+//	const char	*cmp = "Plateau ";
+//
+//	while (*cmp)
+//	{
+//		if (*cmp != *plat)
+//		{
+//			free(plat);
+//			free(map);
+//			return (1);
+//		}
+//		cmp++;
+//		plat++;
+//	}
+	while (*plat != ' ')
+		plat++;
+	map->rows = ft_atoi(plat++);
+	while (*plat != ' ')
+		plat++;
+	map->cols = ft_atoi(plat);
+	return (0);
+}
 
 t_map	*init_map(char *plat)
 {
@@ -18,15 +42,15 @@ t_map	*init_map(char *plat)
 	t_map			*map;
 
 	if (!(map = (t_map *)malloc(sizeof(t_map))))
+	{
+		free(plat);
 		return (NULL);
-	while (*plat != ' ')
-		plat++;
-	map->rows = ft_atoi(plat++);
-	while (*plat != ' ')
-		plat++;
-	map->cols = ft_atoi(plat);
+	}
+	if (parse_plateau(map, plat))
+		return (NULL);
 	if (!(map->map = (int **)malloc(sizeof(int*) * map->rows)))
 	{
+		free(plat);
 		free(map);
 		return (NULL);
 	}
@@ -34,8 +58,8 @@ t_map	*init_map(char *plat)
 	while (++i < map->rows)
 		if (!(map->map[i] = (int *)ft_memalloc(sizeof(int) * map->cols)))
 		{
-			free_2d(map->map, map->rows, map);
-			return (NULL);
+			free(plat);
+			return (free_2d(map->map, map->rows, map));
 		}
 	return (map);
 }

@@ -6,7 +6,7 @@
 /*   By: mshagga <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 17:05:22 by mshagga           #+#    #+#             */
-/*   Updated: 2020/02/20 22:11:59 by mshagga          ###   ########.fr       */
+/*   Updated: 2020/02/20 23:02:03 by mshagga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 
 void	destroy_bot(t_bot *bot)
 {
-	free_2d(bot->enemy->map, bot->enemy->rows, bot->enemy);
-	free_2d(bot->mine->map, bot->mine->rows, bot->mine);
+	if (bot->enemy)
+		free_2d(bot->enemy->map, bot->enemy->rows, NULL);
+	if (bot->mine)
+		free_2d(bot->mine->map, bot->mine->rows, NULL);
 	free_2d(bot->map->map, bot->map->rows, bot->map);
 	free(bot);
 }

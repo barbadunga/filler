@@ -35,23 +35,6 @@ void	draw_rect(SDL_Surface *sur, SDL_Rect *rect, SDL_Color col)
 	SDL_FillRect(sur, rect, pixel_value);
 }
 
-void	print_shaded(t_vis *vis, const char *text, t_point point, SDL_Color col)
-{
-	SDL_Surface	*tmp_sur;
-	SDL_Rect	position;
-	int			w;
-	int			h;
-
-	if (TTF_SizeText(vis->title, text, &w, &h) == -1)
-		free_vis(vis);
-	if (!(tmp_sur = TTF_RenderText_Shaded(vis->title, text, g_black, col)))
-		free_vis(vis);
-	position.x = point.x - w / 2;
-	position.y = point.y - h / 2;
-	SDL_BlitSurface(tmp_sur, NULL, vis->sur, &position);
-	SDL_FreeSurface(tmp_sur);
-}
-
 void	draw_ui(t_vis *vis)
 {
 	const int	center_x = WIDTH / 2;
@@ -59,7 +42,6 @@ void	draw_ui(t_vis *vis)
 	draw_rect(vis->sur, NULL, g_black);
 	draw_rect(vis->sur, &vis->ui->frame, g_purple);
 	draw_rect(vis->sur, &vis->ui->plat, g_dark_purple);
-//	print_text(vis, "filler", (t_point){WIDTH / 2, 25}, g_purple);
 	print_text(vis, vis->p1, (t_point){center_x / 2, vis->ui->frame.y - 75}, g_mint);
 	print_text(vis, vis->p2, (t_point){center_x + center_x / 2, vis->ui->frame.y - 75}, g_pink);
 }
@@ -111,6 +93,7 @@ void	update_info(t_vis *vis, t_board *board)
 	if (!(score = ft_itoa(board->score2)))
 		free_vis(vis);
 	print_text(vis, score, (t_point){ctr + ctr / 2, vis->ui->frame.y - 25}, board->score2 > board->score1 ? g_yellow : g_white);
+	free(score);
 }
 
 void	render(t_vis *vis, t_board *board, t_ui *ui)

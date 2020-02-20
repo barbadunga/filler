@@ -5,7 +5,7 @@
 		<Option title="filler"/>
 		<Option makefile_is_custom="1"/>
 		<Option compiler="gcc"/>
-		<Option virtualFolders="CMake Files\;"/>
+		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\.brew\;CMake Files\..\..\.brew\lib\;CMake Files\..\..\.brew\lib\cmake\;CMake Files\..\..\.brew\lib\cmake\SDL2\;"/>
 		<Build>
 			<Target title="all">
 				<Option working_dir="/Users/mshagga/CLionProjects/re_filler/cmake-build-debug"/>
@@ -90,32 +90,23 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/mshagga/CLionProjects/re_filler/src/algo.c">
+		<Unit filename="/Users/mshagga/CLionProjects/re_filler/vis/src/event_handler.c">
 			<Option target="filler"/>
 		</Unit>
-		<Unit filename="/Users/mshagga/CLionProjects/re_filler/src/debug.c">
+		<Unit filename="/Users/mshagga/CLionProjects/re_filler/vis/src/main.c">
 			<Option target="filler"/>
 		</Unit>
-		<Unit filename="/Users/mshagga/CLionProjects/re_filler/src/init.c">
+		<Unit filename="/Users/mshagga/CLionProjects/re_filler/vis/src/parser.c">
 			<Option target="filler"/>
 		</Unit>
-		<Unit filename="/Users/mshagga/CLionProjects/re_filler/src/lee.c">
-			<Option target="filler"/>
-		</Unit>
-		<Unit filename="/Users/mshagga/CLionProjects/re_filler/src/main.c">
-			<Option target="filler"/>
-		</Unit>
-		<Unit filename="/Users/mshagga/CLionProjects/re_filler/src/parser.c">
-			<Option target="filler"/>
-		</Unit>
-		<Unit filename="/Users/mshagga/CLionProjects/re_filler/src/queue.c">
-			<Option target="filler"/>
-		</Unit>
-		<Unit filename="/Users/mshagga/CLionProjects/re_filler/src/utils.c">
+		<Unit filename="/Users/mshagga/CLionProjects/re_filler/vis/src/render.c">
 			<Option target="filler"/>
 		</Unit>
 		<Unit filename="/Users/mshagga/CLionProjects/re_filler/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/Users/mshagga/CLionProjects/re_filler/../../.brew/lib/cmake/SDL2/sdl2-config.cmake">
+			<Option virtualFolder="CMake Files\..\..\.brew\lib\cmake\SDL2\"/>
 		</Unit>
 	</Project>
 </CodeBlocks_project_file>

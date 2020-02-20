@@ -6,7 +6,7 @@
 /*   By: mshagga <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 20:38:56 by mshagga           #+#    #+#             */
-/*   Updated: 2020/02/20 17:01:52 by mshagga          ###   ########.fr       */
+/*   Updated: 2020/02/20 23:41:47 by mshagga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	free_boards(t_board *ptr)
 			free(ptr->tab[i++]);
 		free(ptr->tab);
 		free(ptr);
+		ptr = tmp;
 	}
 }
 
@@ -45,6 +46,7 @@ void	*free_vis(t_vis	*vis)
 	free(vis);
 	TTF_Quit();
 	SDL_Quit();
+	sleep(10);
 	exit(1);
 }
 
@@ -109,13 +111,9 @@ char	*parse_player(t_vis *vis)
 			while (*ptr != '/')
 				ptr--;
 			if (!(name = ft_memdup(ptr + 1, end - ptr + 1)))
-			{
-				free(line);
-				return (NULL);
-			}
+				free_vis(vis);
 		}
-		else
-			free(line);
+		free(line);
 	}
 	return (name);
 }
