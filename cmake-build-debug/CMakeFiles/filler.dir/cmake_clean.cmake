@@ -7,10 +7,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/filler.dir/src/parser.c.o"
   "CMakeFiles/filler.dir/src/queue.c.o"
   "CMakeFiles/filler.dir/src/utils.c.o"
-  "CMakeFiles/filler.dir/vis/src/event_handler.c.o"
-  "CMakeFiles/filler.dir/vis/src/main.c.o"
-  "CMakeFiles/filler.dir/vis/src/parser.c.o"
-  "CMakeFiles/filler.dir/vis/src/render.c.o"
   "filler"
   "filler.pdb"
 )

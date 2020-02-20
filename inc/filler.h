@@ -6,7 +6,7 @@
 /*   By: mshagga <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 20:04:01 by mshagga           #+#    #+#             */
-/*   Updated: 2020/02/13 22:54:08 by mshagga          ###   ########.fr       */
+/*   Updated: 2020/02/20 21:32:48 by mshagga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,10 @@ typedef struct	s_queue
 
 typedef struct s_bot
 {
-	char    symbol;
 	t_map	*map;
+	t_map	*mine;
+	t_map	*enemy;
+	char    symbol;
 }			 	t_bot;
 
 /*
@@ -64,7 +66,7 @@ typedef struct s_bot
 
 t_bot   *init_bot(void);
 t_map	*init_map(char *plat);
-void	init_all(t_map *board, t_bot *bot, t_queue *queue, t_point2d *score);
+int		init_all(t_map *board, t_bot *bot, t_queue *queue, t_point2d *score);
 int		**init_board(int rows, int cols);
 
 /*
@@ -102,7 +104,7 @@ void	enqueue(t_queue *q, t_point2d point);
 void	reset_queue(t_queue *q);
 
 
-void	main_loop(t_bot *bot, t_map *token, t_point2d *res);
+int 	main_loop(t_bot *bot, t_map *token, t_point2d *res);
 void	*free_2d(int **arr, int rows, t_map *map);
 void	copy_board(t_map *map, int **board, t_queue *queue, int flag);
 

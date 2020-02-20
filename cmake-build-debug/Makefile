@@ -339,114 +339,6 @@ src/utils.c.s:
 	$(MAKE) -f CMakeFiles/filler.dir/build.make CMakeFiles/filler.dir/src/utils.c.s
 .PHONY : src/utils.c.s
 
-vis/src/event_handler.o: vis/src/event_handler.c.o
-
-.PHONY : vis/src/event_handler.o
-
-# target to build an object file
-vis/src/event_handler.c.o:
-	$(MAKE) -f CMakeFiles/filler.dir/build.make CMakeFiles/filler.dir/vis/src/event_handler.c.o
-.PHONY : vis/src/event_handler.c.o
-
-vis/src/event_handler.i: vis/src/event_handler.c.i
-
-.PHONY : vis/src/event_handler.i
-
-# target to preprocess a source file
-vis/src/event_handler.c.i:
-	$(MAKE) -f CMakeFiles/filler.dir/build.make CMakeFiles/filler.dir/vis/src/event_handler.c.i
-.PHONY : vis/src/event_handler.c.i
-
-vis/src/event_handler.s: vis/src/event_handler.c.s
-
-.PHONY : vis/src/event_handler.s
-
-# target to generate assembly for a file
-vis/src/event_handler.c.s:
-	$(MAKE) -f CMakeFiles/filler.dir/build.make CMakeFiles/filler.dir/vis/src/event_handler.c.s
-.PHONY : vis/src/event_handler.c.s
-
-vis/src/main.o: vis/src/main.c.o
-
-.PHONY : vis/src/main.o
-
-# target to build an object file
-vis/src/main.c.o:
-	$(MAKE) -f CMakeFiles/filler.dir/build.make CMakeFiles/filler.dir/vis/src/main.c.o
-.PHONY : vis/src/main.c.o
-
-vis/src/main.i: vis/src/main.c.i
-
-.PHONY : vis/src/main.i
-
-# target to preprocess a source file
-vis/src/main.c.i:
-	$(MAKE) -f CMakeFiles/filler.dir/build.make CMakeFiles/filler.dir/vis/src/main.c.i
-.PHONY : vis/src/main.c.i
-
-vis/src/main.s: vis/src/main.c.s
-
-.PHONY : vis/src/main.s
-
-# target to generate assembly for a file
-vis/src/main.c.s:
-	$(MAKE) -f CMakeFiles/filler.dir/build.make CMakeFiles/filler.dir/vis/src/main.c.s
-.PHONY : vis/src/main.c.s
-
-vis/src/parser.o: vis/src/parser.c.o
-
-.PHONY : vis/src/parser.o
-
-# target to build an object file
-vis/src/parser.c.o:
-	$(MAKE) -f CMakeFiles/filler.dir/build.make CMakeFiles/filler.dir/vis/src/parser.c.o
-.PHONY : vis/src/parser.c.o
-
-vis/src/parser.i: vis/src/parser.c.i
-
-.PHONY : vis/src/parser.i
-
-# target to preprocess a source file
-vis/src/parser.c.i:
-	$(MAKE) -f CMakeFiles/filler.dir/build.make CMakeFiles/filler.dir/vis/src/parser.c.i
-.PHONY : vis/src/parser.c.i
-
-vis/src/parser.s: vis/src/parser.c.s
-
-.PHONY : vis/src/parser.s
-
-# target to generate assembly for a file
-vis/src/parser.c.s:
-	$(MAKE) -f CMakeFiles/filler.dir/build.make CMakeFiles/filler.dir/vis/src/parser.c.s
-.PHONY : vis/src/parser.c.s
-
-vis/src/render.o: vis/src/render.c.o
-
-.PHONY : vis/src/render.o
-
-# target to build an object file
-vis/src/render.c.o:
-	$(MAKE) -f CMakeFiles/filler.dir/build.make CMakeFiles/filler.dir/vis/src/render.c.o
-.PHONY : vis/src/render.c.o
-
-vis/src/render.i: vis/src/render.c.i
-
-.PHONY : vis/src/render.i
-
-# target to preprocess a source file
-vis/src/render.c.i:
-	$(MAKE) -f CMakeFiles/filler.dir/build.make CMakeFiles/filler.dir/vis/src/render.c.i
-.PHONY : vis/src/render.c.i
-
-vis/src/render.s: vis/src/render.c.s
-
-.PHONY : vis/src/render.s
-
-# target to generate assembly for a file
-vis/src/render.c.s:
-	$(MAKE) -f CMakeFiles/filler.dir/build.make CMakeFiles/filler.dir/vis/src/render.c.s
-.PHONY : vis/src/render.c.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -480,18 +372,6 @@ help:
 	@echo "... src/utils.o"
 	@echo "... src/utils.i"
 	@echo "... src/utils.s"
-	@echo "... vis/src/event_handler.o"
-	@echo "... vis/src/event_handler.i"
-	@echo "... vis/src/event_handler.s"
-	@echo "... vis/src/main.o"
-	@echo "... vis/src/main.i"
-	@echo "... vis/src/main.s"
-	@echo "... vis/src/parser.o"
-	@echo "... vis/src/parser.i"
-	@echo "... vis/src/parser.s"
-	@echo "... vis/src/render.o"
-	@echo "... vis/src/render.i"
-	@echo "... vis/src/render.s"
 .PHONY : help
 
 

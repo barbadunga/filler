@@ -54,17 +54,21 @@ t_bot	*init_bot(void)
 	}
 	bot->symbol = line[10] == '1' ? 'O' : 'X';
 	bot->map = NULL;
+	bot->mine = NULL;
+	bot->enemy = NULL;
 	free(line);
 	return (bot);
 }
 
-void	init_all(t_map *board, t_bot *bot, t_queue *queue, t_point2d *score)
+int		init_all(t_map *board, t_bot *bot, t_queue *queue, t_point2d *score)
 {
 	const int	rows = bot->map->rows;
 	const int	cols = bot->map->cols;
 
-	if (!board->map)
-		board->map = init_board(rows, cols);
+	if (!board->map && !(board->map = init_board(rows, cols)))
+		return (1);
+	if (!bot->mine)
+		bot->mine = board;
 	board->rows = rows;
 	board->cols = cols;
 	score->y = INT32_MIN;
@@ -72,6 +76,7 @@ void	init_all(t_map *board, t_bot *bot, t_queue *queue, t_point2d *score)
 	queue->tail = 0;
 	score->x = -1;
 	score->y = INT32_MIN;
+	return (0);
 }
 
 int		**init_board(int rows, int cols)

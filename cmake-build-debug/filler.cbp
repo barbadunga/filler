@@ -114,18 +114,6 @@
 		<Unit filename="/Users/mshagga/CLionProjects/re_filler/src/utils.c">
 			<Option target="filler"/>
 		</Unit>
-		<Unit filename="/Users/mshagga/CLionProjects/re_filler/vis/src/event_handler.c">
-			<Option target="filler"/>
-		</Unit>
-		<Unit filename="/Users/mshagga/CLionProjects/re_filler/vis/src/main.c">
-			<Option target="filler"/>
-		</Unit>
-		<Unit filename="/Users/mshagga/CLionProjects/re_filler/vis/src/parser.c">
-			<Option target="filler"/>
-		</Unit>
-		<Unit filename="/Users/mshagga/CLionProjects/re_filler/vis/src/render.c">
-			<Option target="filler"/>
-		</Unit>
 		<Unit filename="/Users/mshagga/CLionProjects/re_filler/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>

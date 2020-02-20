@@ -6,11 +6,19 @@
 /*   By: mshagga <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 17:05:22 by mshagga           #+#    #+#             */
-/*   Updated: 2020/02/13 22:59:52 by mshagga          ###   ########.fr       */
+/*   Updated: 2020/02/20 22:11:59 by mshagga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
+
+void	destroy_bot(t_bot *bot)
+{
+	free_2d(bot->enemy->map, bot->enemy->rows, bot->enemy);
+	free_2d(bot->mine->map, bot->mine->rows, bot->mine);
+	free_2d(bot->map->map, bot->map->rows, bot->map);
+	free(bot);
+}
 
 int		write_move(t_point2d move)
 {
@@ -29,20 +37,24 @@ int		main(void)
 
 	if (!(bot = init_bot()))
 		return (0);
-	debug_init();
-	bot_info(bot);
 	while (TRUE)
 	{
 		if (!(token = parse_input(bot)))
 		{
-			free(bot);
+			destroy_bot(bot);
 			return (0);
 		}
-		res.x = -1;
-		res.y = -1;
-		main_loop(bot, token, &res);
+		res = (t_point2d){-1, -1};
+		if (main_loop(bot, token, &res))
+		{
+			destroy_bot(bot);
+			free_2d(token->map, token->rows, token);
+			return (1);
+		}
+		free_2d(token->map, token->rows, token);
 		if (write_move(res))
 			break ;
 	}
+	destroy_bot(bot);
 	return (0);
 }

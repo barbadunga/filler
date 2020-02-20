@@ -161,58 +161,6 @@ CMakeFiles/filler.dir/src/utils.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/filler.dir/src/utils.c.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshagga/CLionProjects/re_filler/src/utils.c -o CMakeFiles/filler.dir/src/utils.c.s
 
-CMakeFiles/filler.dir/vis/src/event_handler.c.o: CMakeFiles/filler.dir/flags.make
-CMakeFiles/filler.dir/vis/src/event_handler.c.o: ../vis/src/event_handler.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshagga/CLionProjects/re_filler/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/filler.dir/vis/src/event_handler.c.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/filler.dir/vis/src/event_handler.c.o   -c /Users/mshagga/CLionProjects/re_filler/vis/src/event_handler.c
-
-CMakeFiles/filler.dir/vis/src/event_handler.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/filler.dir/vis/src/event_handler.c.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshagga/CLionProjects/re_filler/vis/src/event_handler.c > CMakeFiles/filler.dir/vis/src/event_handler.c.i
-
-CMakeFiles/filler.dir/vis/src/event_handler.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/filler.dir/vis/src/event_handler.c.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshagga/CLionProjects/re_filler/vis/src/event_handler.c -o CMakeFiles/filler.dir/vis/src/event_handler.c.s
-
-CMakeFiles/filler.dir/vis/src/main.c.o: CMakeFiles/filler.dir/flags.make
-CMakeFiles/filler.dir/vis/src/main.c.o: ../vis/src/main.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshagga/CLionProjects/re_filler/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object CMakeFiles/filler.dir/vis/src/main.c.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/filler.dir/vis/src/main.c.o   -c /Users/mshagga/CLionProjects/re_filler/vis/src/main.c
-
-CMakeFiles/filler.dir/vis/src/main.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/filler.dir/vis/src/main.c.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshagga/CLionProjects/re_filler/vis/src/main.c > CMakeFiles/filler.dir/vis/src/main.c.i
-
-CMakeFiles/filler.dir/vis/src/main.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/filler.dir/vis/src/main.c.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshagga/CLionProjects/re_filler/vis/src/main.c -o CMakeFiles/filler.dir/vis/src/main.c.s
-
-CMakeFiles/filler.dir/vis/src/parser.c.o: CMakeFiles/filler.dir/flags.make
-CMakeFiles/filler.dir/vis/src/parser.c.o: ../vis/src/parser.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshagga/CLionProjects/re_filler/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object CMakeFiles/filler.dir/vis/src/parser.c.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/filler.dir/vis/src/parser.c.o   -c /Users/mshagga/CLionProjects/re_filler/vis/src/parser.c
-
-CMakeFiles/filler.dir/vis/src/parser.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/filler.dir/vis/src/parser.c.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshagga/CLionProjects/re_filler/vis/src/parser.c > CMakeFiles/filler.dir/vis/src/parser.c.i
-
-CMakeFiles/filler.dir/vis/src/parser.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/filler.dir/vis/src/parser.c.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshagga/CLionProjects/re_filler/vis/src/parser.c -o CMakeFiles/filler.dir/vis/src/parser.c.s
-
-CMakeFiles/filler.dir/vis/src/render.c.o: CMakeFiles/filler.dir/flags.make
-CMakeFiles/filler.dir/vis/src/render.c.o: ../vis/src/render.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mshagga/CLionProjects/re_filler/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building C object CMakeFiles/filler.dir/vis/src/render.c.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/filler.dir/vis/src/render.c.o   -c /Users/mshagga/CLionProjects/re_filler/vis/src/render.c
-
-CMakeFiles/filler.dir/vis/src/render.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/filler.dir/vis/src/render.c.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mshagga/CLionProjects/re_filler/vis/src/render.c > CMakeFiles/filler.dir/vis/src/render.c.i
-
-CMakeFiles/filler.dir/vis/src/render.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/filler.dir/vis/src/render.c.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mshagga/CLionProjects/re_filler/vis/src/render.c -o CMakeFiles/filler.dir/vis/src/render.c.s
-
 # Object files for target filler
 filler_OBJECTS = \
 "CMakeFiles/filler.dir/src/algo.c.o" \
@@ -222,11 +170,7 @@ filler_OBJECTS = \
 "CMakeFiles/filler.dir/src/main.c.o" \
 "CMakeFiles/filler.dir/src/parser.c.o" \
 "CMakeFiles/filler.dir/src/queue.c.o" \
-"CMakeFiles/filler.dir/src/utils.c.o" \
-"CMakeFiles/filler.dir/vis/src/event_handler.c.o" \
-"CMakeFiles/filler.dir/vis/src/main.c.o" \
-"CMakeFiles/filler.dir/vis/src/parser.c.o" \
-"CMakeFiles/filler.dir/vis/src/render.c.o"
+"CMakeFiles/filler.dir/src/utils.c.o"
 
 # External object files for target filler
 filler_EXTERNAL_OBJECTS =
@@ -239,16 +183,12 @@ filler: CMakeFiles/filler.dir/src/main.c.o
 filler: CMakeFiles/filler.dir/src/parser.c.o
 filler: CMakeFiles/filler.dir/src/queue.c.o
 filler: CMakeFiles/filler.dir/src/utils.c.o
-filler: CMakeFiles/filler.dir/vis/src/event_handler.c.o
-filler: CMakeFiles/filler.dir/vis/src/main.c.o
-filler: CMakeFiles/filler.dir/vis/src/parser.c.o
-filler: CMakeFiles/filler.dir/vis/src/render.c.o
 filler: CMakeFiles/filler.dir/build.make
 filler: ../Libft/libft.a
 filler: /Users/mshagga/.brew/lib/libSDL2.a
 filler: /Users/mshagga/.brew/lib/libSDL2_ttf.a
 filler: CMakeFiles/filler.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/mshagga/CLionProjects/re_filler/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Linking C executable filler"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/mshagga/CLionProjects/re_filler/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking C executable filler"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/filler.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

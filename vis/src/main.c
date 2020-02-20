@@ -6,7 +6,7 @@
 /*   By: mshagga <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 20:38:56 by mshagga           #+#    #+#             */
-/*   Updated: 2020/02/16 19:21:29 by mshagga          ###   ########.fr       */
+/*   Updated: 2020/02/20 17:01:52 by mshagga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,6 @@ void	*free_vis(t_vis	*vis)
 		SDL_DestroyWindow(vis->win);
 	if (vis->board)
 		free_boards(vis->board);
-	if (vis->board)
-		TTF_DE
 	if (vis->p1)
 		free(vis->p1);
 	if (vis->p2)

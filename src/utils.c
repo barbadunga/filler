@@ -17,12 +17,15 @@ void	*free_2d(int **arr, int rows, t_map *map)
 	register int	i;
 
 	i = 0;
-	while (i < rows)
+	if (arr)
 	{
-		free(arr[i]);
-		i++;
+		while (i < rows)
+		{
+			free(arr[i]);
+			i++;
+		}
+		free(arr);
 	}
-	free(arr);
 	if (map)
 		free(map);
 	return (NULL);

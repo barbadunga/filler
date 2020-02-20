@@ -10,7 +10,7 @@ include_directories(vis/inc)
 aux_source_directory(src sources)
 aux_source_directory(${PROJECT_SOURCE_DIR}/vis/src visualizer)
 
-add_executable(filler ${sources} ${visualizer})
+add_executable(filler ${sources})
 
 target_link_libraries(filler ${PROJECT_SOURCE_DIR}/Libft/libft.a)
 target_link_libraries(filler /Users/mshagga/.brew/lib/libSDL2.a)

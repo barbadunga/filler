@@ -6,7 +6,7 @@
 /*   By: mshagga <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/05 21:04:43 by mshagga           #+#    #+#             */
-/*   Updated: 2020/02/13 22:59:01 by mshagga          ###   ########.fr       */
+/*   Updated: 2020/02/20 22:07:01 by mshagga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ static void inline	place_token(int **board, t_map *token, t_point2d *point,
 			if (!token->map[i][j])
 			{
 				if (board[point->y + i][point->x + j] == -1)
-					enqueue(q, (t_point2d){point->x + j, point->y + i});
+					enqueue(q, (t_point2d){point->x + j,
+							point->y + i});
 				board[point->y + i][point->x + j] = 0;
 			}
 			j++;
@@ -67,8 +68,10 @@ static int inline	check_token(t_map *b, t_map *token, t_point2d *point)
 	return (inter);
 }
 
-static int inline	count_score(int **mine, int **enemy, int rows, int cols)
+static int inline	count_score(t_bot *bot, int rows, int cols)
 {
+	const int		**mine = (const int **)bot->mine->map;
+	const int		**enemy = (const int **)bot->enemy->map;
 	register int	i;
 	register int	j;
 	int				score;
@@ -93,28 +96,41 @@ static int inline	count_score(int **mine, int **enemy, int rows, int cols)
 	return (score);
 }
 
-static int inline	get_score(t_map *board, t_map *token, t_point2d *point,
-								t_queue *q)
+static int inline	get_score(t_bot *bot, t_map *token, t_point2d *point,
+		t_queue *q)
 {
+	const t_map		*board = bot->mine;
 	static t_map	enemy = {NULL, 0, 0};
 	static t_queue	q_e = {NULL, 0, 0};
 	t_point2d		p[board->rows * board->cols];
 
-	if (!enemy.map)
-		if (!(enemy.map = init_board(board->rows, board->cols)))
-			return (INT32_MIN);
+	if (!enemy.map && !(enemy.map = init_board(board->rows, board->cols)))
+		return (1);
+	if (!bot->enemy)
+		bot->enemy = &enemy;
+	copy_board(bot->map, bot->mine->map, q, FALSE);
+	place_token(bot->mine->map, token, point, q);
 	enemy.rows = board->rows;
 	enemy.cols = board->cols;
-	q_e.data = p;
-	q_e.head = 0;
-	q_e.tail = 0;
-	copy_board(board, enemy.map, &q_e, TRUE);
-	lee_algorithm(board, q);
+	q_e = (t_queue){p, 0, 0};
+	copy_board((t_map *)board, enemy.map, &q_e, TRUE);
+	lee_algorithm((t_map *)board, q);
 	lee_algorithm(&enemy, &q_e);
-	return (count_score(board->map, enemy.map, board->rows, board->cols));
+	return (0);
 }
 
-void				main_loop(t_bot *bot, t_map *token, t_point2d *res)
+static void			update_score(t_bot *bot, t_point2d *score, t_point2d *res,
+									t_point2d *current)
+{
+	score->x = count_score(bot, bot->map->rows, bot->map->cols);
+	if (score->x > score->y)
+	{
+		score->y = score->x;
+		*res = *current;
+	}
+}
+
+int					main_loop(t_bot *bot, t_map *token, t_point2d *res)
 {
 	static t_map	board = {NULL, 0, 0};
 	static t_queue	queue = {NULL, 0, 0};
@@ -122,26 +138,21 @@ void				main_loop(t_bot *bot, t_map *token, t_point2d *res)
 	t_point2d		score;
 	t_point2d		points[bot->map->rows * bot->map->cols];
 
-	init_all(&board, bot, &queue, &score);
+	if (init_all(&board, bot, &queue, &score))
+		return (1);
 	queue.data = points;
 	i.y = -1;
 	while (++i.y < bot->map->rows)
 	{
 		i.x = -1;
 		while (++i.x < bot->map->cols)
-		{
 			if (check_token(bot->map, token, &i))
 			{
-				copy_board(bot->map, board.map, &queue, FALSE);
-				place_token(board.map, token, &i, &queue);
-				score.x = get_score(&board, token, &i, &queue);
-				if (score.x > score.y)
-				{
-					score.y = score.x;
-					*res = i;
-				}
+				if (get_score(bot, token, &i, &queue))
+					return (1);
+				update_score(bot, &score, res, &i);
+				reset_queue(&queue);
 			}
-			reset_queue(&queue);
-		}
 	}
+	return (0);
 }
