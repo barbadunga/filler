@@ -6,26 +6,11 @@
 /*   By: mshagga <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 20:55:43 by mshagga           #+#    #+#             */
-/*   Updated: 2020/02/16 18:41:40 by mshagga          ###   ########.fr       */
+/*   Updated: 2020/02/24 17:16:09 by mshagga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "visualizer.h"
-
-//const SDL_Color g_mint = {96, 148, 137};
-const SDL_Color g_mint = {80, 147, 151};
-const SDL_Color g_white = {255, 255, 255};
-//const SDL_Color g_purple = {231, 79, 244};
-const SDL_Color g_purple = {150, 50, 150};
-const SDL_Color g_violet = {154, 48, 105};
-const SDL_Color g_dark_purple = {73, 19, 76};
-const SDL_Color g_peach = {233, 113, 64};
-const SDL_Color g_black = {0, 0, 0};
-const SDL_Color g_pink = {216, 56, 80};
-const SDL_Color g_orange = {232, 145, 61};
-const SDL_Color g_yellow = {242, 219, 122};
-const SDL_Color g_blue = {38, 93, 218};
-const SDL_Color g_bg = {65, 51, 51};
 
 void	draw_rect(SDL_Surface *sur, SDL_Rect *rect, SDL_Color col)
 {
@@ -42,43 +27,10 @@ void	draw_ui(t_vis *vis)
 	draw_rect(vis->sur, NULL, g_black);
 	draw_rect(vis->sur, &vis->ui->frame, g_purple);
 	draw_rect(vis->sur, &vis->ui->plat, g_dark_purple);
-	print_text(vis, vis->p1, (t_point){center_x / 2, vis->ui->frame.y - 75}, g_mint);
-	print_text(vis, vis->p2, (t_point){center_x + center_x / 2, vis->ui->frame.y - 75}, g_pink);
-}
-
-SDL_Color	get_color(char c)
-{
-	if (c == 'X')
-		return (g_pink);
-	if (c == 'O')
-		return (g_mint);
-	if (c == 'x' || c == 'o')
-		return (g_yellow);
-	return ((SDL_Color){0, 0, 0});
-}
-
-void		draw_grid(SDL_Surface *sur, t_board *board, SDL_Rect cell, int gap)
-{
-	const int	start_x = cell.x;
-	const int	rows = board->row;
-	const int	cols = board->col;
-	int			i;
-	int			j;
-
-	i = 0;
-	while (i < rows)
-	{
-		j = 0;
-		cell.x = start_x;
-		while (j < cols)
-		{
-				draw_rect(sur, &cell, get_color(board->tab[i][j]));
-			cell.x += gap + cell.w;
-			j++;
-		}
-		cell.y += gap + cell.h;
-		i++;
-	}
+	print_text(vis, vis->p1, (t_point){center_x / 2,
+									vis->ui->frame.y - 75}, g_mint);
+	print_text(vis, vis->p2, (t_point){center_x + center_x / 2,
+									vis->ui->frame.y - 75}, g_pink);
 }
 
 void	update_info(t_vis *vis, t_board *board)
@@ -88,11 +40,13 @@ void	update_info(t_vis *vis, t_board *board)
 
 	if (!(score = ft_itoa(board->score1)))
 		free_vis(vis);
-	print_text(vis, score, (t_point){ctr / 2, vis->ui->frame.y - 25}, board->score1 > board->score2 ? g_yellow : g_white);
+	print_text(vis, score, (t_point){ctr / 2, vis->ui->frame.y - 25},
+			board->score1 > board->score2 ? g_yellow : g_white);
 	free(score);
 	if (!(score = ft_itoa(board->score2)))
 		free_vis(vis);
-	print_text(vis, score, (t_point){ctr + ctr / 2, vis->ui->frame.y - 25}, board->score2 > board->score1 ? g_yellow : g_white);
+	print_text(vis, score, (t_point){ctr + ctr / 2, vis->ui->frame.y - 25},
+			board->score2 > board->score1 ? g_yellow : g_white);
 	free(score);
 }
 

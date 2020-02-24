@@ -11,10 +11,11 @@ include_directories(${SDL2_INCLUDE_DIRS})
 aux_source_directory(src sources)
 aux_source_directory(${PROJECT_SOURCE_DIR}/vis/src visualizer)
 
-add_executable(filler ${visualizer})
+add_executable(filler ${sources} ${visualizer})
 
 find_package(SDL2 REQUIRED)
 target_link_libraries(filler ${PROJECT_SOURCE_DIR}/Libft/libft.a)
-target_link_libraries(filler /Users/mshagga/.brew/lib/libSDL2.a)
-target_link_libraries(filler /Users/mshagga/.brew/lib/libSDL2_ttf.a)
+#target_link_libraries(filler /Users/mshagga/.brew/lib/libSDL2.a)
+
+
 target_link_libraries(filler ${SDL2_LIBRARIES})

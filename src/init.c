@@ -6,27 +6,14 @@
 /*   By: mshagga <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/03 18:11:19 by mshagga           #+#    #+#             */
-/*   Updated: 2020/02/20 22:51:26 by mshagga          ###   ########.fr       */
+/*   Updated: 2020/02/24 21:49:40 by mshagga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-static int	parse_plateau(t_map *map, char *plat)
+static inline int	parse_plateau(t_map *map, char *plat)
 {
-//	const char	*cmp = "Plateau ";
-//
-//	while (*cmp)
-//	{
-//		if (*cmp != *plat)
-//		{
-//			free(plat);
-//			free(map);
-//			return (1);
-//		}
-//		cmp++;
-//		plat++;
-//	}
 	while (*plat != ' ')
 		plat++;
 	map->rows = ft_atoi(plat++);
@@ -36,7 +23,7 @@ static int	parse_plateau(t_map *map, char *plat)
 	return (0);
 }
 
-t_map	*init_map(char *plat)
+t_map				*init_map(char *plat)
 {
 	register int	i;
 	t_map			*map;
@@ -64,7 +51,7 @@ t_map	*init_map(char *plat)
 	return (map);
 }
 
-t_bot	*init_bot(void)
+t_bot				*init_bot(void)
 {
 	t_bot	*bot;
 	char	*line;
@@ -84,7 +71,8 @@ t_bot	*init_bot(void)
 	return (bot);
 }
 
-int		init_all(t_map *board, t_bot *bot, t_queue *queue, t_point2d *score)
+int					init_all(t_map *board, t_bot *bot, t_queue *queue,
+								t_point2d *score)
 {
 	const int	rows = bot->map->rows;
 	const int	cols = bot->map->cols;
@@ -103,7 +91,7 @@ int		init_all(t_map *board, t_bot *bot, t_queue *queue, t_point2d *score)
 	return (0);
 }
 
-int		**init_board(int rows, int cols)
+int					**init_board(int rows, int cols)
 {
 	register int	i;
 	int				**res;

@@ -66,7 +66,7 @@ static int	parse_token(int **ptr, int rows)
 	return (0);
 }
 
-static int	skip_line()
+static int	skip_line(void)
 {
 	char	*line;
 

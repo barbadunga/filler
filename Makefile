@@ -6,11 +6,11 @@
 #    By: mshagga <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/29 17:21:59 by mshagga           #+#    #+#              #
-#    Updated: 2020/02/13 17:34:59 by mshagga          ###   ########.fr        #
+#    Updated: 2020/02/24 21:42:32 by mshagga          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-FLAGS = -Wall -Wextra -O3 -L $(LIBFT_DIR) -lft -I $(INC_DIR) -I $(LIBFT_DIR)
+FLAGS = -Wall -Wextra -Werror -O3 -L $(LIBFT_DIR) -lft -I $(INC_DIR) -I $(LIBFT_DIR)
 NAME = mshagga.filler
 CC = gcc
 
@@ -18,10 +18,9 @@ LIBFT_DIR = ./Libft
 INC_DIR = ./inc
 OBJ_DIR = ./obj
 SRC_DIR = ./src
-PLAYERS_DIR = ./players
+PLAYERS_DIR = ./resources/players
 
 SRC_LIST =	main.c \
-			debug.c \
 			init.c \
 			lee.c \
 			algo.c \
@@ -37,9 +36,9 @@ SRC = $(addprefix $(SRC_DIR)/, $(SRC_LIST))
 OBJ = $(addprefix $(OBJ_DIR)/, $(OBJ_LIST))
 INC = $(addprefix $(INC_DIR)/, $(INC_LIST))
 
-all: $(NAME)
+all: $(PLAYERS_DIR)/$(NAME)
 
-$(NAME): $(LIBFT) $(INC) $(OBJ_DIR) $(OBJ)
+$(PLAYERS_DIR)/$(NAME): $(LIBFT) $(INC) $(OBJ_DIR) $(OBJ)
 	$(CC) $(FLAGS) -o $(PLAYERS_DIR)/$(NAME) $(OBJ)
 
 $(OBJ_DIR):

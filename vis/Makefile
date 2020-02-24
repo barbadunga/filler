@@ -6,7 +6,7 @@
 #    By: mshagga <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/14 19:52:36 by mshagga           #+#    #+#              #
-#    Updated: 2020/02/15 19:38:45 by mshagga          ###   ########.fr        #
+#    Updated: 2020/02/24 17:28:33 by mshagga          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,8 @@ SRC_LIST =	main.c \
 			render.c \
 			event_handler.c \
 			parser.c \
+			draw_grid.c \
+			init.c \
 
 INC_LIST = visualizer.h
 OBJ_LIST = $(patsubst %.c, %.o, $(SRC_LIST))

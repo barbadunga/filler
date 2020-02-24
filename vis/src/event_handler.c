@@ -54,7 +54,7 @@ void	event_loop(t_vis *vis)
 			else
 				vis->is_pause ^= 1;
 		}
-		if( event.type == SDL_QUIT )
+		if (event.type == SDL_QUIT)
 			vis->is_close = 1;
 	}
 	if (!vis->is_pause)

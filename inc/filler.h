@@ -6,7 +6,7 @@
 /*   By: mshagga <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 20:04:01 by mshagga           #+#    #+#             */
-/*   Updated: 2020/02/20 21:32:48 by mshagga          ###   ########.fr       */
+/*   Updated: 2020/02/24 21:50:04 by mshagga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,23 +19,13 @@
 # define DEBUG_FILE	"debug.info"
 # define MASK		0xFFFFFFFFu
 # define MAX_CELLS	9900
-# define MASK_X		(int)('X' << 24)
-# define MASK_O		(int)('O' << 24)
-# define MASK_DOT	(int)('.' << 24)
-# define MASK_CHAR	0xFF000000
 
 # include "libft.h"
 
-typedef union	s_point
-{
-	unsigned long long	val;
-	int					xy[2];
-}				t_point;
-
 typedef	struct	s_point2d
 {
-	int		x;
-	int		y;
+	int	x;
+	int	y;
 }				t_point2d;
 
 typedef struct	s_map
@@ -52,60 +42,53 @@ typedef struct	s_queue
 	int			head;
 }				t_queue;
 
-typedef struct s_bot
+typedef struct	s_bot
 {
 	t_map	*map;
 	t_map	*mine;
 	t_map	*enemy;
-	char    symbol;
-}			 	t_bot;
+	char	symbol;
+}				t_bot;
 
 /*
 ** Init bot and map functions
 */
 
-t_bot   *init_bot(void);
-t_map	*init_map(char *plat);
-int		init_all(t_map *board, t_bot *bot, t_queue *queue, t_point2d *score);
-int		**init_board(int rows, int cols);
+t_bot			*init_bot(void);
+t_map			*init_map(char *plat);
+int				init_all(t_map *board, t_bot *bot, t_queue *queue,
+						t_point2d *score);
+int				**init_board(int rows, int cols);
 
 /*
 ** Parse functions
 */
 
-t_map	*parse_input(t_bot *bot);
+t_map			*parse_input(t_bot *bot);
 
 /*
 ** Main logic
 */
 
-t_point	make_choice(t_bot *bot, t_map *token, t_point *pos, int total);
-void	lee_algorithm(t_map *map, t_queue *queue);
-
-/*
-** Debug tools
-*/
-
-void	bot_info(t_bot *bot);
-void	write_line(char *line);
-void	debug_init(void);
-void	print_map(t_map *ptr);
-void	write_number(int n1, int n2);
-void	write_vec(t_vec *pos);
-void	write_array(int **array, int rows, int cols);
-void	write_queue(t_queue *q);
+int				get_score(t_bot *bot, t_map *token, t_point2d *point,
+							t_queue *q);
+int				main_loop(t_bot *bot, t_map *token, t_point2d *res);
 
 /*
 ** Queue functions
 */
 
-t_point2d	dequeue(t_queue *q);
-void	enqueue(t_queue *q, t_point2d point);
-void	reset_queue(t_queue *q);
+t_point2d		dequeue(t_queue *q);
+void			enqueue(t_queue *q, t_point2d point);
+void			reset_queue(t_queue *q);
 
+/*
+** Utils function
+*/
 
-int 	main_loop(t_bot *bot, t_map *token, t_point2d *res);
-void	*free_2d(int **arr, int rows, t_map *map);
-void	copy_board(t_map *map, int **board, t_queue *queue, int flag);
+void			*free_2d(int **arr, int rows, t_map *map);
+void			copy_board(t_map *map, int **board, t_queue *queue, int flag);
+void			place_token(int **board, t_map *token, t_point2d *point,
+						t_queue *q);
 
 #endif

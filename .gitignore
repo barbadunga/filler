@@ -3,3 +3,8 @@ filler.trace
 cmake-build-debug
 obj
 *test*
+.DC_Store
+.idea
+CMakeLists.txt
+*trace
+cmake-build-debug

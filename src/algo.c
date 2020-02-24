@@ -6,38 +6,11 @@
 /*   By: mshagga <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/05 21:04:43 by mshagga           #+#    #+#             */
-/*   Updated: 2020/02/20 22:24:49 by mshagga          ###   ########.fr       */
+/*   Updated: 2020/02/24 16:14:43 by mshagga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
-
-static void inline	place_token(int **board, t_map *token, t_point2d *point,
-								t_queue *q)
-{
-	const int		rows = token->rows;
-	const int		cols = token->cols;
-	register int	i;
-	register int	j;
-
-	i = 0;
-	while (i < rows)
-	{
-		j = 0;
-		while (j < cols)
-		{
-			if (!token->map[i][j])
-			{
-				if (board[point->y + i][point->x + j] == -1)
-					enqueue(q, (t_point2d){point->x + j,
-							point->y + i});
-				board[point->y + i][point->x + j] = 0;
-			}
-			j++;
-		}
-		i++;
-	}
-}
 
 static int inline	check_token(t_map *b, t_map *token, t_point2d *point)
 {
@@ -96,30 +69,7 @@ static int inline	count_score(t_bot *bot, int rows, int cols)
 	return (score);
 }
 
-static int inline	get_score(t_bot *bot, t_map *token, t_point2d *point,
-		t_queue *q)
-{
-	const t_map		*board = bot->mine;
-	static t_map	enemy = {NULL, 0, 0};
-	static t_queue	q_e = {NULL, 0, 0};
-	t_point2d		p[board->rows * board->cols];
-
-	if (!enemy.map && !(enemy.map = init_board(board->rows, board->cols)))
-		return (1);
-	if (!bot->enemy)
-		bot->enemy = &enemy;
-	copy_board(bot->map, bot->mine->map, q, FALSE);
-	place_token(bot->mine->map, token, point, q);
-	enemy.rows = board->rows;
-	enemy.cols = board->cols;
-	q_e = (t_queue){p, 0, 0};
-	copy_board((t_map *)board, enemy.map, &q_e, TRUE);
-	lee_algorithm((t_map *)board, q);
-	lee_algorithm(&enemy, &q_e);
-	return (0);
-}
-
-static void			update_score(t_bot *bot, t_point2d *score, t_point2d *res,
+static inline void	update_score(t_bot *bot, t_point2d *score, t_point2d *res,
 									t_point2d *current)
 {
 	score->x = count_score(bot, bot->map->rows, bot->map->cols);

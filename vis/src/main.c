@@ -6,11 +6,19 @@
 /*   By: mshagga <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 20:38:56 by mshagga           #+#    #+#             */
-/*   Updated: 2020/02/20 23:41:47 by mshagga          ###   ########.fr       */
+/*   Updated: 2020/02/24 21:47:53 by mshagga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "visualizer.h"
+
+SDL_Color g_mint = (SDL_Color){80, 147, 151};
+SDL_Color g_white = (SDL_Color){255, 255, 255};
+SDL_Color g_purple = {150, 50, 150};
+SDL_Color g_dark_purple = {73, 19, 76};
+SDL_Color g_black = {0, 0, 0};
+SDL_Color g_pink = {216, 56, 80};
+SDL_Color g_yellow = {242, 219, 122};
 
 void	free_boards(t_board *ptr)
 {
@@ -19,7 +27,7 @@ void	free_boards(t_board *ptr)
 
 	while (ptr->prev)
 		ptr = ptr->prev;
-	while (ptr->next)
+	while (ptr)
 	{
 		tmp = ptr->next;
 		i = 0;
@@ -31,7 +39,7 @@ void	free_boards(t_board *ptr)
 	}
 }
 
-void	*free_vis(t_vis	*vis)
+void	*free_vis(t_vis *vis)
 {
 	if (vis->sur)
 		SDL_FreeSurface(vis->sur);
@@ -43,82 +51,17 @@ void	*free_vis(t_vis	*vis)
 		free(vis->p1);
 	if (vis->p2)
 		free(vis->p2);
+	if (vis->ui)
+		free(vis->ui);
 	free(vis);
+	if (vis->title)
+		TTF_CloseFont(vis->title);
 	TTF_Quit();
 	SDL_Quit();
-	sleep(10);
 	exit(1);
 }
 
-t_vis	*init_visualizer()
-{
-	t_vis	*vis;
-
-	if (!(vis = (t_vis *)ft_memalloc(sizeof(t_vis))))
-		return (NULL);
-	if (!(vis->win = SDL_CreateWindow(TITLE, SDL_WINDOWPOS_CENTERED,
-			SDL_WINDOWPOS_CENTERED, WIDTH, HEIGHT, SDL_WINDOW_SHOWN)))
-		return (free_vis(vis));
-	if (!(vis->sur = SDL_GetWindowSurface(vis->win)))
-		return (free_vis(vis));
-	if (!(vis->title = TTF_OpenFont("title.ttf", 60)))
-		free_vis(vis);
-	vis->is_pause = 1;
-	return (vis);
-}
-
-t_ui	*init_ui(t_vis *vis)
-{
-	t_ui	*ui;
-	int		w;
-	int		h;
-	int		tmp;
-	int		size_cell;
-
-	if (!(ui = (t_ui *)malloc(sizeof(t_ui))))
-		return (NULL);
-	w = (int)(0.95 * WIDTH);
-	h = w * vis->board->row / vis->board->col;
-	ui->frame = (SDL_Rect){ (WIDTH - w) / 2, HEADER + (w - h) / 2,
-						 w, h + FRAME};
-	ui->plat = (SDL_Rect){ui->frame.x + FRAME, ui->frame.y + FRAME,
-					   ui->frame.w - 2 * FRAME, ui->frame.h - 2 * FRAME};
-	w = ui->plat.w;
-	tmp = (int)(0.95 * w);
-	ui->gap = (w - tmp) / (vis->board->col + 1);
-	ui->gap += ui->gap ? 0 : 1;
-	size_cell = (w - ui->gap * (vis->board->col + 1)) / vis->board->col;
-	tmp = (w - (size_cell * vis->board->col + ui->gap * (vis->board->col + 1))) / 2;
-	ui->cell = (SDL_Rect){ui->plat.x + ui->gap + tmp, ui->plat.y +
-					   ui->gap + tmp, size_cell, size_cell};
-	return (ui);
-}
-
-char	*parse_player(t_vis *vis)
-{
-	char	*line;
-	char	*name;
-	char	*end;
-	char	*ptr;
-
-	name = NULL;
-	while (!name && get_next_line(STDIN_FILENO, &line) == 1)
-	{
-		if ((end = ft_strstr(line, ".filler]")))
-		{
-			ptr = end;
-			*end = 0;
-			while (*ptr != '/')
-				ptr--;
-			if (!(name = ft_memdup(ptr + 1, end - ptr + 1)))
-				free_vis(vis);
-		}
-		free(line);
-	}
-	return (name);
-}
-
-int main(void)
+int		main(void)
 {
 	t_vis	*vis;
 

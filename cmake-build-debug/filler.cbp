@@ -90,6 +90,30 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/Users/mshagga/CLionProjects/re_filler/src/algo.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/Users/mshagga/CLionProjects/re_filler/src/debug.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/Users/mshagga/CLionProjects/re_filler/src/init.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/Users/mshagga/CLionProjects/re_filler/src/lee.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/Users/mshagga/CLionProjects/re_filler/src/main.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/Users/mshagga/CLionProjects/re_filler/src/parser.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/Users/mshagga/CLionProjects/re_filler/src/queue.c">
+			<Option target="filler"/>
+		</Unit>
+		<Unit filename="/Users/mshagga/CLionProjects/re_filler/src/utils.c">
+			<Option target="filler"/>
+		</Unit>
 		<Unit filename="/Users/mshagga/CLionProjects/re_filler/vis/src/event_handler.c">
 			<Option target="filler"/>
 		</Unit>

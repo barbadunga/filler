@@ -6,13 +6,13 @@
 /*   By: mshagga <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 19:38:31 by mshagga           #+#    #+#             */
-/*   Updated: 2020/02/16 18:24:50 by mshagga          ###   ########.fr       */
+/*   Updated: 2020/02/24 16:45:25 by mshagga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "visualizer.h"
 
-void	get_size(t_board *board, char *line)
+void		get_size(t_board *board, char *line)
 {
 	while (*line != ' ')
 		line++;
@@ -22,7 +22,7 @@ void	get_size(t_board *board, char *line)
 	board->col = ft_atoi(line);
 }
 
-void	get_board(t_vis *vis, t_board *board)
+void		get_board(t_vis *vis, t_board *board)
 {
 	const int		rows = board->row;
 	const int		cols = board->col;
@@ -37,8 +37,7 @@ void	get_board(t_vis *vis, t_board *board)
 		free_vis(vis);
 	while (i < rows)
 	{
-		if (!(board->tab[i] = (char *)malloc(sizeof(char) * cols)) ||
-			get_next_line(STDIN_FILENO, &line) != 1)
+		if (get_next_line(STDIN_FILENO, &line) != 1)
 			free_vis(vis);
 		if (!(board->tab[i] = ft_strdup(line + 4)))
 			free_vis(vis);
@@ -90,7 +89,7 @@ static void	parse_score(t_board *board)
 	board->score2--;
 }
 
-void	parse_board(t_vis *vis)
+void		parse_board(t_vis *vis)
 {
 	t_board	*board;
 	char	*line;
